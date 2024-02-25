@@ -1,0 +1,35 @@
+label{
+    color:rgb(250, 250, 250);
+    font-family: 'Times New Roman';
+    font-size: 25px;
+}
+body {
+    background-image: url("IMG/background\ pag\ principal.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+legend {
+    
+    animation: float 2s infinite linear;
+    color: aliceblue;
+    font-family: 'Times New Roman', Times, serif; 
+    text-shadow: 0 0 20px rgb(255, 255, 255);
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+}

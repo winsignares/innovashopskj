@@ -5,28 +5,15 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Acceso al sistema</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src='main.js'></script>
-    <style>
-      form{
-          width: 430px;
-          height: 320px;
-          margin: auto;
-          background-image: linear-gradient(to bottom, rgb(249, 107, 47), rgb(73, 73, 73));
-      }
-      label{
-          color:whitesmoke;
-          font-family: 'Times New Roman';
-      }
-  </style>
 </head>
 <body>
     <div class="container">
         <form action="validar.php" method="post">
-          <center>
-            <fieldset>
-              <legend>ACCESO AL SISTEMA</legend>
+            <fieldset style="text-align: center;">
+              <legend style="font-size: 40px;"><b>INNOVATESHOP</b></legend>
               <br><br>
                   <label for="rol">Rol:</label>
                   <select name="rol" id="rol">
@@ -40,9 +27,8 @@
                   <label for="contrasena">Contraseña:</label>
                   <input type="password" name="contrasena" id="contrasena">
                   <br><br>
-                  <button type="submit" class="btn btn-success">Acceder</button>
+                  <button type="submit" class="btn btn-outline-success" style="font-size: 18px;"><b>Acceder</b></button>
             </fieldset>
-          </center>
         </form>
       </div>
 </body>
