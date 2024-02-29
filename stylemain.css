@@ -14,6 +14,19 @@ body {
     min-height: 100vh;
 }
 
+fieldset{
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.586);
+}
+
+.btw:hover{background-color:#5dd475;}
+
+.btw{
+  background-color:rgb(230, 218, 218);
+  color:rgb(0, 0, 0);
+  font-size:18px;
+}
+
 legend {
     
     animation: float 2s infinite linear;

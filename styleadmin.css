@@ -8,6 +8,13 @@ body {
     align-items: center;
     min-height: 100vh;
 }
+
+button{
+  font-size: 30px;
+  color: black;
+
+}
+
 fieldset{
     font-family: 'Times New Roman', Times, serif;
     font-size: large;
