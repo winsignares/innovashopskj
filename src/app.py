@@ -42,5 +42,16 @@ def cerrar():
     session.pop('usuario',None)
     return redirect('/')
 
+@app.route('/actualizar', methods=['POST'])
+def actualizar():
+    id = request.form['id']
+    Nombre = request.form['Nombre']
+    Precio = request.form['Precio']
+    articulo = Articulos.query.get(id)
+    articulo.Nombre = Nombre
+    articulo.Precio = Precio
+    db.session.commit()
+    return redirect('/larticulos')
+
 if __name__ == "__main__":
     app.run(debug=True)
