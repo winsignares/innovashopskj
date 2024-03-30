@@ -17,7 +17,7 @@ def index():
 
 @app.route('/ingresar', methods=['POST'])
 def ingresar():
-    user = request.form['user']
+    user = request.form['user'].replace(' ', '')
     password = request.form['password']
     user = db.session.query(User).filter(User.user == user, User.password == password).all()
     
