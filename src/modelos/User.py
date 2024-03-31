@@ -3,7 +3,7 @@ from config.bd import app, db, ma
 class User(db.Model):
     __tablename__ = 'User'
     
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(50))
     

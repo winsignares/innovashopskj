@@ -1,0 +1,72 @@
+{% extends "loginadmin.html" %}
+{% block content %}
+<style>
+  #formulario {
+    /* Add styles for the form section here */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 20px auto;
+    max-width: 500px;
+  }
+
+  #formulario label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  #formulario input,
+  #formulario select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+  }
+</style>
+
+<section id="formulario">
+  <h2>Crear Empresa</h2>
+  <form action="/empresas/crear" method="post">
+    <label for="nombre">Nombre:</label>
+    <input type="text"  name="nombre_emp" required>
+    <br>
+
+    <label for="companyid">ID Empresa:</label>
+   <input type="text" name="companyid" required>
+
+    <label for="mail">Mail:</label>
+    <input type="text"  name="mail_emp" required>
+    <br>
+
+    <label for="ubicacion">Ubicación:</label>
+    <input type="text"  name="ubicacion" required>
+    <br>
+    
+    <label for="estado">Estado:</label>
+    <select name="status">
+      <option value="activo">Activo</option>
+      <option value="inactivo">Inactivo</option>
+    </select>
+    <br>
+
+    <label for="iva">IVA:</label>
+    <input type="number"  name="IVA" required>
+    <br>
+
+    <label for="fecha_inicio">Fecha de Inicio:</label>
+    <input type="date"  name="fecha_Inicio" required>
+    <br>
+
+    <label for="fecha_final">Fecha Final:</label>
+    <input type="date" name="fecha_final" required>
+    <br>
+
+    <button type="submit">Crear</button>
+    </form>
+  </section>
+  
+</body>
+
+
+{% endblock %}
+
