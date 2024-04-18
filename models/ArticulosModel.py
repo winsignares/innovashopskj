@@ -1,9 +1,9 @@
-from config.bd import db, ma, app
+from config.db import db, ma, app
 
 class Articulos (db.Model):
     __tablename__ = "Articulo"
     
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True)
     Nombre = db.Column(db.String(70), unique=True)
     Precio = db.Column(db.Float())
     

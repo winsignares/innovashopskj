@@ -1,9 +1,9 @@
-from config.bd import app, db, ma 
+from config.db import app, db, ma 
 
 class EMP(db.Model):
     __tablename__ = 'EMP'
     
-    companyid = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    companyid = db.Column(db.Integer, primary_key=True)
     name_emp = db.Column(db.String(50), unique=True)
     mail_emp = db.Column(db.String(50))
     ubicacion = db.Column(db.String(50))

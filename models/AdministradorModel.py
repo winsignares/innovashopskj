@@ -1,9 +1,9 @@
-from config.bd import app, db, ma 
+from config.db import app, db, ma 
 
 class Admin(db.Model):
     __tablename__ = 'administrador'
     
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True)
     userad = db.Column(db.String(50), unique=True)
     passwordad = db.Column(db.String(50))
     
