@@ -16,17 +16,21 @@ def ingresar():
     if user:
         resultado = users_schema.dump([user])
         session['usuario'] = resultado
-        return redirect('/dashboard')
+        return redirect('/Portal_Empresa')
     else:
         return redirect('/')
     
-@app.route('/dashboard', methods=['GET'])
-def larticulos():
+@app.route('/Portal_Empresa', methods=['GET'])
+def portalempresa():
     
     if 'usuario' in session:
-        return render_template("Dashboard.html", usuario = session['usuario'])
+        return render_template("./Portales/Portal_Empresa.html", usuario = session['usuario'])
     else:
         return redirect('/')
+    
+@app.route('/Vendedor')
+def vendedor():
+    return render_template("./Portales/Portal_Vendedores.html")
     
 @app.route('/cerrar')
 def cerrar():

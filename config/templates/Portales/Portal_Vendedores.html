@@ -1,0 +1,97 @@
+{% extends "./Portales/Portal_Empresa.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../static/css/portalempresa.css">
+    <script src="../static/js/app.js" defer></script>
+</head>
+<body>
+    <div class="menu-dashboard open">
+        <div class="top-menu">
+            <div class="logo">
+                <img src="../static/img/s-png-28667.png" alt="">
+                <span>Innovashop</span>
+            </div>
+            <div class="toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </div>
+        <div class="input-search">
+            <i class='bx bx-search-alt' ></i>
+            <input type="text" class="input" placeholder="Buscar">
+        </div>
+        <div class="menu">
+
+            <div class="enlace" data-pagina="Modulo-cliente">
+                <i class='bx bxs-user'></i>
+                <span>Modulo de cliente</span>
+            </div>
+
+            <div class="enlace" data-pagina="Gestionar-productos">
+                <i class='bx bxs-user-detail'></i>
+                <span>Gestionar productos</span>
+            </div>
+
+            <div class="enlace" data-pagina="Cotizacion">
+                <i class='bx bx-clipboard'></i>
+                <span>Cotizacion</span>
+            </div>
+
+            <div class="enlace" data-pagina="Descuento">
+                <i class='bx bxs-user-pin'></i>
+                <span>Descuento</span>
+            </div>
+
+            <div class="enlace" data-pagina="Venta">
+                <i class='bx bxs-user-pin'></i>
+                <span>Venta</span>
+            </div>
+            
+            <br><br>
+            <div class="enlace">
+                <a onclick="salir()">
+                    <div class="bx bx-log-out"></div>
+                    <span>Salir</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="main--content">
+            <div class="header--wrapper">
+                <div class="header--tittle">
+                    <span style="color: black;">Portal De Vendedores</span>
+                </div>
+            </div>
+        </div>
+        <div class="pagina Modulo-cliente">
+            <div class="dentro">Modulo de cliente</div>
+        </div>
+
+        <div class="pagina Gestionar-productos">
+            <div class="dentro">Gestionar productos</div>
+        </div>
+
+        <div class="pagina Cotizacion">
+            <div class="dentro">Cotizacion</div>
+        </div>
+
+        <div class="pagina Descuento">
+            <div class="dentro">Descuento</div>
+        </div>
+
+        <div class="pagina Venta">
+            <div class="dentro">Venta</div>
+        </div>
+
+    </div>
+</body>
+</html>
+{% endblock %}
