@@ -1,0 +1,85 @@
+{% extends "login.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../static/css/portalempresa.css">
+    <script src="../static/js/app.js" defer></script>
+</head>
+<body>
+    <div class="menu-dashboard open">
+        <div class="top-menu">
+            <div class="logo">
+                <img src="../static/img/s-png-28667.png" alt="">
+                <span>Innovashop</span>
+            </div>
+            <div class="toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </div>
+        <div class="input-search">
+            <i class='bx bx-search-alt' ></i>
+            <input type="text" class="input" placeholder="Buscar">
+        </div>
+        <div class="menu">
+
+            <div class="enlace" data-pagina="Proveedores">
+                <i class='bx bxs-user'></i>
+                <span>Proveedores</span>
+            </div>
+
+            <a href="/Vendedor">
+                <div class="enlace">
+                    <i class='bx bxs-user-detail'></i>
+                    <span>Vendedores</span>
+                </div>
+            </a>
+
+            <div class="enlace" data-pagina="Productos">
+                <i class='bx bx-clipboard'></i>
+                <span>Productos</span>
+            </div>
+
+            <div class="enlace" data-pagina="Clientes">
+                <i class='bx bxs-user-pin'></i>
+                <span>Clientes</span>
+            </div>
+            <br><br>
+            <div class="enlace">
+                <a onclick="salir()">
+                    <div class="bx bx-log-out"></div>
+                    <span>Salir</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="main--content">
+            <div class="header--wrapper">
+                <div class="header--tittle">
+                    <span style="color: black;">Portal De Empresas</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pagina Proveedores">
+            <div class="dentro">Proveedores</div>
+        </div>
+
+        <div class="pagina Productos">
+            <div class="dentro">Productos</div>
+        </div>
+
+        <div class="pagina Clientes">
+            <div class="dentro">Clientes</div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
