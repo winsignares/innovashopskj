@@ -194,7 +194,7 @@ body {
     margin: 0;
     max-height: 90vh;
     overflow-y: auto;
-    box-sizing: border-box; /* Asegurar que el box-sizing se aplique antes del padding */
+    box-sizing: border-box; 
 }
 
 .container {
