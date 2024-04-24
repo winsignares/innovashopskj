@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const paginas = document.querySelectorAll(".pagina");
 
   
+
+  
   enlaces.forEach(enlace => {
     enlace.addEventListener("click", function() {
       const nombrePagina = this.getAttribute("data-pagina");
