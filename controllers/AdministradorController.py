@@ -20,6 +20,6 @@ def ingresaradmin():
     if userad:
         resultado = Admin_schema.dump([userad])
         session['usuarioad'] = resultado
-        return render_template('./Admin/Pagadmin.html')
+        return render_template('./Admin/portalAdministrativo.html')
     else:
         return redirect('/loginad')
