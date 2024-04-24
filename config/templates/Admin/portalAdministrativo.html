@@ -15,7 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../static/css/portalAdministrativo.css" />
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../static/css/prueba.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <div class="portal-administrativo">
@@ -35,7 +36,11 @@
         </div>
         <div> 
           <div> 
-            <button type="button" class="btn btn-primary btn-lg" id = "AgregarEmpresa"> Agregar Empresa</button> 
+            <a href="/Crearempresa">
+              <button type="button" class="btn btn-primary btn-lg" id = "AgregarEmpresa"> 
+                Agregar Empresa
+              </button> 
+            </a>
           </div>
           
         </div>
@@ -133,6 +138,48 @@
         <div class="line-2">
         </div>
       </div>
+
+      <div class="contenedor">
+        <h2>Lista de Empresas</h2>
+
+    <!-- Formulario de búsqueda -->
+    <form id="formulario-busqueda" onsubmit="return false;"> <!-- Evita redireccionar al servidor -->
+        <label for="buscar">Buscar por nombre o ID:</label>
+        <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
+    </form>
+
+    <!-- Tabla de empresas -->
+    <table>
+      <thead>
+          <tr>
+              <th>ID Empresa</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Ubicación</th>
+              <th>Estado</th>
+              <th>IVA</th>
+              <th>Fecha de Inicio</th>
+              <th>Fecha Final</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for empresa in empresas %}
+          <tr>
+              <td>{{ empresa.companyid }}</td>
+              <td>{{ empresa.name_emp }}</td>
+              <td>{{ empresa.mail_emp }}</td>
+              <td>{{ empresa.ubicacion }}</td>
+              <td>{{ empresa.status }}</td>
+              <td>{{ empresa.IVA }}</td>
+              <td>{{ empresa.fecha_Inicio }}</td>
+              <td>{{ empresa.fecha_final }}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+
+      </div>
+
       <div class="container-11">
         <button type="button" class="btn btn-outline-dark btn-lg" id = "Volver">Cerrar</button>    
           <button type="button" class="btn btn-primary btn-lg" id = "Guardar">Guardar</button>                    

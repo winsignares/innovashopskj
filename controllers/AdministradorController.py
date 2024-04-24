@@ -7,10 +7,6 @@ ruta_administrador = Blueprint('route_administrador', __name__)
 Admin_schema = AdminSchema()
 Admin_schema = AdminSchema(many=True)
 
-@app.route('/loginad', methods=['GET'])
-def loginadmin():
-    return render_template('./Admin/loginadmin.html')
-
 @app.route('/ingresaradmin', methods=['POST'])
 def ingresaradmin():
     userad = request.form['userad'].replace(' ', '')
@@ -23,3 +19,16 @@ def ingresaradmin():
         return render_template('./Admin/portalAdministrativo.html')
     else:
         return redirect('/loginad')
+
+
+@app.route('/loginad', methods=['GET'])
+def loginadmin():
+    return render_template('./Admin/loginadmin.html')
+    
+@app.route('/portaladmin', methods=['GET'])
+def portaladministrativo():
+    return render_template('./Admin/portalAdministrativo.html')
+
+@app.route('/Crearempresa')
+def crearempresa():
+    return render_template('./Admin/Crearempresas.html')

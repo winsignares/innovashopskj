@@ -11,12 +11,18 @@ users_schema = UsersSchema(many=True)
 def ingresar():
     user = request.form['user'].replace(' ', '')
     password = request.form['password']
-    user = db.session.query(User).filter(User.user == user, User.password == password).all()
+    user = db.session.query(User).filter(User.user == user, User.password == password).first()
      
     if user:
-        resultado = users_schema.dump([user])
+        resultado = user_schema.dump(user)
         session['usuario'] = resultado
-        return redirect('/Portal_Empresa')
+        
+        if resultado['rol'] == 'empresa':
+            return redirect('/Portal_Empresa')
+        elif resultado['rol'] == 'cliente':
+            return redirect('/Portal_Cliente')
+        elif resultado['rol'] == 'vendedor':
+            return redirect('/Portal_Vendedor')
     else:
         return redirect('/')
     
@@ -28,9 +34,20 @@ def portalempresa():
     else:
         return redirect('/')
     
-@app.route('/Vendedor')
-def vendedor():
-    return render_template("./Portales/Portal_Vendedores.html")
+@app.route('/Portal_Cliente', methods=['GET'])
+def portalcliente():
+    
+    if 'usuario' in session:
+        return render_template("./Portales/Portal_Cliente.html", usuario = session['usuario'])
+    else:
+        return redirect('/')
+    
+@app.route('/Portal_Vendedor')
+def portalvendedor():
+    if 'usuario' in session:
+        return render_template("./Portales/Portal_Vendedores.html")
+    else:
+        return redirect('/')
     
 @app.route('/cerrar')
 def cerrar():
