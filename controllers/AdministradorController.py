@@ -9,7 +9,7 @@ Admin_schema = AdminSchema(many=True)
 
 @app.route('/loginad', methods=['GET'])
 def loginadmin():
-    return render_template('loginadmin.html')
+    return render_template('./Admin/loginadmin.html')
 
 @app.route('/ingresaradmin', methods=['POST'])
 def ingresaradmin():
@@ -20,6 +20,6 @@ def ingresaradmin():
     if userad:
         resultado = Admin_schema.dump([userad])
         session['usuarioad'] = resultado
-        return render_template('Pagadmin.html')
+        return render_template('./Admin/Pagadmin.html')
     else:
         return redirect('/loginad')
