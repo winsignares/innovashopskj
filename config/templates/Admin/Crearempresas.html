@@ -1,8 +1,12 @@
-{% extends "loginadmin.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 <style>
   #formulario {
-    /* Add styles for the form section here */
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -24,49 +28,53 @@
   }
 </style>
 
-<section id="formulario">
-  <h2>Crear Empresa</h2>
-  <form action="/empresas/crear" method="post">
-    <label for="nombre">Nombre:</label>
-    <input type="text"  name="nombre_emp" required>
-    <br>
+<body>
+  <section id="formulario">
+    <h2>Crear Empresa</h2>
+    <form action="/empresas/crear" method="post">
+      <label for="nombre">Nombre:</label>
+      <input type="text" name="name_emp" required>
+      <br>
+  
+      <label for="mail">Mail:</label>
+      <input type="text" name="mail_emp" required>
+      <br>
+  
+      <label for="ubicacion">Ubicación:</label>
+      <input type="text" name="ubicacion" required>
+      <br>
+  
+      <label for="estado">Estado:</label>
+      <select name="status">
+        <option value="activo">Activo</option>
+        <option value="inactivo">Inactivo</option>
+      </select>
+      <br>
+  
+      <label para="IVA">IVA:</label>
+      <input type="number" name="IVA" required>
+      <br>
+  
+      <label para="fecha_inicio">Fecha de Inicio:</label>
+      <input type="date" name="fecha_Inicio" required>
+      <br>
+  
+      <label para="fecha_final">Fecha Final:</label>
+      <input type="date" name="fecha_final" required>
+      <br>
+  
+      <button type="submit">Crear</button>
 
-    <label for="companyid">ID Empresa:</label>
-   <input type="text" name="companyid" required>
+      <div>
+        <p>
+            <br>
+            <a href="/portaladmin" class="text-white-50 fw-bold">Volver</a>
+        </p>
+      </div>
 
-    <label for="mail">Mail:</label>
-    <input type="text"  name="mail_emp" required>
-    <br>
 
-    <label for="ubicacion">Ubicación:</label>
-    <input type="text"  name="ubicacion" required>
-    <br>
-    
-    <label for="estado">Estado:</label>
-    <select name="status">
-      <option value="activo">Activo</option>
-      <option value="inactivo">Inactivo</option>
-    </select>
-    <br>
-
-    <label for="iva">IVA:</label>
-    <input type="number"  name="IVA" required>
-    <br>
-
-    <label for="fecha_inicio">Fecha de Inicio:</label>
-    <input type="date"  name="fecha_Inicio" required>
-    <br>
-
-    <label for="fecha_final">Fecha Final:</label>
-    <input type="date" name="fecha_final" required>
-    <br>
-
-    <button type="submit">Crear</button>
     </form>
   </section>
   
 </body>
-
-
-{% endblock %}
-
+</html>
