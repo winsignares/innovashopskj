@@ -13,9 +13,6 @@ class User(db.Model):
       self.password = password
       self.rol = rol
     
-    def __repr__(self):
-        return f'<User {self.user}>'
-    
 with app.app_context():
     db.create_all()
 

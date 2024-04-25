@@ -5,9 +5,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const enlaces = document.querySelectorAll(".menu .enlace");
   const paginas = document.querySelectorAll(".pagina");
 
+  enlaces.forEach(enlace => {
+    enlace.addEventListener("click", function() {
+      const nombrePagina = this.getAttribute("data-pagina");
+      mostrarPagina(nombrePagina);
+    });
+  });
+
+
   function mostrarPagina(nombrePagina) {
     paginas.forEach(pagina => {
-      pagina.style.display = 'none'; 
+      pagina.style.display = 'none';
     });
 
     const paginaActiva = document.querySelector(`.pagina.${nombrePagina}`);
@@ -16,32 +24,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  
-  const hash = window.location.hash; 
-  if (hash) {
-    const nombrePagina = hash.substring(1); 
-    mostrarPagina(nombrePagina); 
-  }
-
-  enlaces.forEach(enlace => {
-    enlace.addEventListener("click", function() {
-      const nombrePagina = this.getAttribute("data-pagina");
-      mostrarPagina(nombrePagina); 
-    });
-  });
-
   function salir() {
-    localStorage.clear(); 
-    window.location.href = "/"; 
+    localStorage.clear();
+    window.location.href = "/";
+    history.replaceState({}, "", "/");
   }
 
   const botonSalir = document.querySelector(".menu .enlace a[onclick='salir()']");
   if (botonSalir) {
-    botonSalir.addEventListener("click", salir);
+    botonSalir.addEventListener('click', salir);
   }
 
+
   toggle.addEventListener("click", () => {
-    menuDashboard.classList.toggle("open"); 
+    menuDashboard.classList.toggle("open");
 
     if (iconoMenu.classList.contains("bx-menu")) {
       iconoMenu.classList.replace("bx-menu", "bx-x");
@@ -50,25 +46,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-
-var abrirModal = document.getElementById("abrir-modal");
-var modal = document.getElementById("mi-modal");
-var cerrarModal = document.querySelector(".cerrar-modal");
-
-abrirModal.addEventListener("click", function () {
-    modal.style.display = "flex";
-});
-
-cerrarModal.addEventListener("click", function () {
-    modal.style.display = "none";
-});
-
-window.addEventListener("click", function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none"; 
-    }
-});
-
-
-

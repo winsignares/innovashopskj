@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, session, url_for, flash
 from config.db import db, app
 from models.EmpresaModel import EMP, EMPSchema
 
@@ -40,13 +40,12 @@ def ver_empresas():
     empresas = EMP.query.all()
     return render_template('./Admin/portalAdministrativo.html', empresas=empresas)
 
-@app.route('/empresas/buscar', methods=['GET'])
-def buscar_empresas():
-    termino = request.args.get('termino')
+@app.route('/Portal_Empresa', methods=['GET'])
+def portalempresa():
+    
+    if 'usuario' in session:
+        return render_template("./Portales/Portal_Empresa.html", usuario = session['usuario'])
+    else:
+        return redirect('/')
 
-    empresas_filtradas = EMP.query.filter(
-        (EMP.name_emp.like(f"%{termino}%")) | (EMP.companyid.like(f"%{termino}%"))
-    ).all()
-
-    return render_template("empresa_tbody.html", empresas=empresas_filtradas)
 

@@ -4,8 +4,15 @@ from models.VendedoresModel import Vendedor, VendedorSchema
 
 ruta_vendedor = Blueprint("route_vendedor", __name__)
 
-user_schema = VendedorSchema()
-users_schema = VendedorSchema(many=True)
+vendedor_schema = VendedorSchema()
+vendedores_schema = VendedorSchema(many=True)
+
+@app.route('/Portal_Vendedor')
+def portalvendedor():
+    if 'usuario' in session:
+        return render_template("./Portales/Portal_Vendedores.html")
+    else:
+        return redirect('/')
 
 @app.route('/registrovendedor', methods=['POST'])
 def registrar_vendedor():
@@ -14,6 +21,8 @@ def registrar_vendedor():
         Nombre = request.form['nombre']
         Email = request.form['email'] 
         Fecha_inicio = request.form['fecha_inicio']
+        user = request.form['user'] 
+        password = request.form['password'] 
 
         vendedor_existente = Vendedor.query.filter_by(id=id_vendedor).all()
         
@@ -24,17 +33,19 @@ def registrar_vendedor():
             id=id_vendedor,
             nombre=Nombre,
             email=Email,
-            fecha_inicio=Fecha_inicio
+            fecha_inicio=Fecha_inicio,
+            user = user,
+            password = password
         )
 
         db.session.add(nuevo_vendedor)
         db.session.commit()
 
-    return redirect('/Portal_Empresa/')
+    return redirect('/vendedores')
 
 
-@app.route('/Portal_Empresa/', methods=['GET'])
+@app.route('/vendedores', methods=['GET'])
 def ver_vendedores():
     vendedores = Vendedor.query.all()
-    return render_template('./Portales/Portal_Empresa.html', vendedores=vendedores)
+    return render_template( './Portales/Portal_Empresa.html', vendedores=vendedores)
     
