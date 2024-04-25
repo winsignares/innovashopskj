@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ventana Emergente con JavaScript</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='RegistroVendedor.css'>
+    <script src='main.js'></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <button id="abrir-modal">Abrir Ventana Emergente</button>
+
+    <div id="mi-modal" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <h2>Registro Vendedores</h2>
+            
+            <div class="campovendedor">
+                <div id = "Letra">ID</div>
+                <input type="text" id="si" placeholder="Ingrese ID de vendedor">
+            </div>
+            
+            <div class="campovendedor">
+                <div id = "Letra">Nombre</div>
+                <input type="text" id="textbox" placeholder="Ingrese Usuario">
+            </div>
+            
+            <div class="campovendedor">
+                <div id = "Letra">Email</div>
+                <input type="text" id="textbox" placeholder="Ingrese su email">
+            </div>
+            
+            <div class="campovendedor">
+                <div id = "Letra">Fecha de inicio</div>
+                <input type="text" id="textbox" placeholder="DD/MM/AA">
+            </div>
+
+            <div>
+                <button type="button" class="btn btn-primary btn-lg" id = "Guardar">Registrar vendedor</button>   
+            </div>
+        </div>
+    </div>
+
+  <script>
+    var abrirModal = document.getElementById("abrir-modal");
+    var modal = document.getElementById("mi-modal");
+    var cerrarModal = document.querySelector(".cerrar-modal");
+
+    abrirModal.addEventListener("click", function () {
+      modal.style.display = "flex";
+    });
+
+    cerrarModal.addEventListener("click", function () {
+      modal.style.display = "none";
+    });
+
+    window.addEventListener("click", function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none"; 
+      }
+    });
+  </script>
+</body>
+</html>
