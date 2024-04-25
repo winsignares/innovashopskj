@@ -10,7 +10,11 @@
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../static/css/portalempresa.css">
+    <link rel="stylesheet" href="../static/css/Tablas.css">
+    <link rel="stylesheet" href="../static/css/Registrar.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../static/js/app.js" defer></script>
+    <script src="../static/js/ventanasemergentes.js" defer></script>
 </head>
 <body>
     <div class="menu-dashboard open">
@@ -33,13 +37,11 @@
                 <i class='bx bxs-user'></i>
                 <span>Proveedores</span>
             </div>
-
-            <a href="/Vendedor">
-                <div class="enlace">
-                    <i class='bx bxs-user-detail'></i>
-                    <span>Vendedores</span>
-                </div>
-            </a>
+    
+            <div class="enlace" data-pagina="Vendedores">
+                <i class='bx bxs-user-detail'></i>
+                <span>Vendedores</span>
+            </div>
 
             <div class="enlace" data-pagina="Productos">
                 <i class='bx bx-clipboard'></i>
@@ -74,6 +76,83 @@
                     </b></p></div>
             </div>
     
+            <div class="pagina Vendedores">
+                <div class="redireccion" style="text-align: right;">
+                    <a href="/Portal_Vendedor">Ir a portal del vendedor -></a>
+                </div>
+
+                <div class="dentro">
+                    <div class="contenedor">                      
+                        <div class="containerform">
+                            <div class="formulario">
+                                <form id="formulario-busqueda" onsubmit="return false;">
+                                    <label for="buscar">ID:</label>
+                                    <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
+                                </form>
+                            </div>
+                            <div class="registrovendedor">
+                                <button id="abrir-modal">Agregar un vendedor</button>
+                            </div>
+                        </div>
+
+                        <div id="mi-modal" class="modal">
+                            <div class="modal-contenido">
+                                <span class="cerrar-modal">&times;</span>
+                                <h2>Registro Vendedores</h2>
+                                
+                                <form action="/registrovendedor" method="post">
+
+                                    <div class="campovendedor">
+                                        <label for="id">ID</label>
+                                        <input type="number" name="id" placeholder="Ingrese ID de vendedor" required>
+                                    </div>
+                                    
+                                    <div class="campovendedor">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" name="nombre" placeholder="Ingrese Usuario" required>
+                                    </div>
+                                    
+                                    <div class="campovendedor">
+                                        <label for="email">Email</label>
+                                        <input type="text" name="email" placeholder="Ingrese su email" required>
+                                    </div>
+                                    
+                                    <div class="campovendedor">
+                                        <label for= "fecha_inicio">Fecha de inicio</label>
+                                        <input type="date" name="fecha_inicio" placeholder="DD/MM/AA" required>
+                                    </div>
+                        
+                                    <div>
+                                        <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar vendedor</button>   
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID Vendedores</th>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Fecha de Inicio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for vendedor in vendedores %}
+                                <tr>
+                                    <td>{{ vendedor.id }}</td>
+                                    <td>{{ vendedor.nombre }}</td>
+                                    <td>{{ vendedor.email}}</td>
+                                    <td>{{ vendedor.fecha_inicio }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+            
             <div class="pagina Productos">
                 <div class="dentro">Productos</div>
             </div>

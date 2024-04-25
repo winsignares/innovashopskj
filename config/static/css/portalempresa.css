@@ -203,6 +203,12 @@ body {
     border-radius: 10px;
     overflow-y: auto;
     height: 80vh;
+    padding: 3rem;
+}
+
+.redireccion{
+    padding: 0.1rem;
+    margin: 0;
 }
 
 .container {
