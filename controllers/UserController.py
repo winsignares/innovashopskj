@@ -2,6 +2,7 @@ from flask import Blueprint, Flask, render_template,json, jsonify, redirect, ses
 from config.db import app, db, ma
 from models.UserModel import User, UsersSchema
 from models.VendedoresModel import Vendedor, VendedorSchema
+from models.EmpresaModel import EMP, EMPSchema
 
 
 ruta_user = Blueprint("route_user", __name__)
@@ -15,6 +16,7 @@ def ingresar():
     password = request.form['password']
     user1 = db.session.query(User).filter(User.user == user, User.password == password).first()
     user2 = db.session.query(Vendedor).filter(Vendedor.user == user, Vendedor.password == password).first()
+    user3 = db.session.query(EMP).filter(EMP.user == user, EMP.password == password).first()
      
     if user1:
         resultado1 = user_schema.dump(user1)
@@ -26,6 +28,11 @@ def ingresar():
         session['usuario'] = resultado2
     
         return redirect('/Portal_Vendedor')
+    elif user3:
+        resultado3 = user_schema.dump(user3)
+        session['usuario'] = resultado3
+    
+        return redirect('/Portal_Empresa')
     else:
         return redirect('/')
     

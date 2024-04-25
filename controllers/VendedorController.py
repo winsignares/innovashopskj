@@ -7,16 +7,11 @@ ruta_vendedor = Blueprint("route_vendedor", __name__)
 vendedor_schema = VendedorSchema()
 vendedores_schema = VendedorSchema(many=True)
 
-@app.route('/Portal_Vendedor')
-def portalvendedor():
-    if 'usuario' in session:
-        return render_template("./Portales/Portal_Vendedores.html")
-    else:
-        return redirect('/')
 
 @app.route('/registrovendedor', methods=['POST'])
 def registrar_vendedor():
     if request.method == 'POST':
+        
         id_vendedor = request.form['id']
         Nombre = request.form['nombre']
         Email = request.form['email'] 
@@ -25,9 +20,12 @@ def registrar_vendedor():
         password = request.form['password'] 
 
         vendedor_existente = Vendedor.query.filter_by(id=id_vendedor).all()
+        usuario = Vendedor.query.filter_by(user=user).all()
         
         if vendedor_existente:
             return jsonify({"error": "El ID ya esta en uso."}), 409
+        if usuario:
+            return jsonify({"error": "El Usuario-Login ya esta en uso."}), 409
         
         nuevo_vendedor = Vendedor(
             id=id_vendedor,
@@ -41,11 +39,13 @@ def registrar_vendedor():
         db.session.add(nuevo_vendedor)
         db.session.commit()
 
-    return redirect('/vendedores')
+    return redirect('/Portal_Empresa')
 
 
-@app.route('/vendedores', methods=['GET'])
-def ver_vendedores():
-    vendedores = Vendedor.query.all()
-    return render_template( './Portales/Portal_Empresa.html', vendedores=vendedores)
+@app.route('/Portal_Vendedor')
+def portalvendedor():
     
+    if 'usuario' in session:
+        return render_template("./Portales/Portal_Vendedores.html")
+    else:
+        return redirect('/')

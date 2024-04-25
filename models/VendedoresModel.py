@@ -4,10 +4,10 @@ class Vendedor(db.Model):
     __tablename__ = 'Vendedores'
     
     id = db.Column(db.Integer, primary_key=True)
-    nombre = db.Column(db.String(50), unique=True)
+    nombre = db.Column(db.String(50))
     email = db.Column(db.String(50))
     fecha_inicio = db.Column(db.Date)
-    user = db.Column(db.String(50))
+    user = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(50))
     
     def __init__(self, id, nombre, email, fecha_inicio, user, password):

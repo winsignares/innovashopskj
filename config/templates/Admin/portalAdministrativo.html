@@ -14,178 +14,135 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../static/css/portalAdministrativo.css" />
+    <link rel="stylesheet" href="../static/css/Registrar.css">
     <link rel="stylesheet" href="../static/css/Tablas.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../static/js/ventanasemergentes.js" defer></script>
   </head>
+
   <body>
-    <div class="portal-administrativo">
-      <div class="portal-administrativo-1">
-      PORTAL ADMINISTRATIVO
-      </div>
-      <div class="container-13">
-        <div class="container-4">
-          <div class="id-de-empresa">
-          ID de Empresa:
-          </div>
-          <div class="container-5">
-            <span>
-              <input type="text" id="companyId" placeholder="Ingrese ID de Empresa">
-            </span>
-          </div>
-        </div>
-        <div> 
-          <div> 
-            <a href="/Crearempresa">
-              <button type="button" class="btn btn-primary btn-lg" id = "AgregarEmpresa"> 
-                Agregar Empresa
-              </button> 
-            </a>
-          </div>
-          
-        </div>
-      </div>
-      <div class="container-17">
-        <div class="container">
-          <div class="container-10">
-            <div class="nombre">
-            Nombre
-            </div>
-            <div class="mdulos-de-la-empresa">
-            Módulos de la empresa
-            </div>
-            <div class="periodo-activo">
-            Periodo activo
-            </div>
-          </div>
-          <div class="container-6">
-            <div class="container-19">
-              <div class="container-15">
-                <div>
-                  <input type="checkbox" id="rectangle-83">
+
+      <div class="cont" >
+        <h2>Portal Administrativo</h2>
+
+        <div class="dentro">
+          <div class="contenedor">                      
+            <div class="containerform">
+                <div class="formulario">
+                      <form id="formulario-busqueda" onsubmit="return false;">
+                          <label for="buscar">ID:</label>
+                          <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
+                      </form>
                 </div>
-              </div>
-              <span class="mdulo-de-descuento">
-              Módulo de descuento 
-              </span>
-            </div>
-            <div class="container-14">
-              <div class="perido-establecido">
-              Periodo establecido:
-              </div>
-              <div class="rectangle-13">
-                <input type="text" id="periodo-establecido">
-              </div>
-            </div>
-          </div>
-          <div class="container-2">
-            <div class="container-3">
-              <div class="container-7">
-                <div>
-                  <input type="checkbox" id="rectangle-83">
+                <div class="registrovendedor">
+                    <button id="abrir-modal">Agregar una empresa</button>
                 </div>
+            </div>
+            
+            <div id="mi-modal" class="modal">
+              <div class="modal-contenido">
+                  <span class="cerrar-modal">&times;</span>
+                  <h2>Crear Empresa</h2>
+                  <form action="/registroempresa" method="post">
+  
+                    <div class="campo">
+                      <label for="companyid">ID:</label>
+                      <input type="number" name="companyid" placeholder="Ingrese el ID de empresa" autocomplete="off" required>
+                    </div>
+  
+                    <div class="campo">
+                      <label for="nombre">Nombre:</label>
+                      <input type="text" name="name_emp" placeholder="Ingrese el nombre" autocomplete="off" required>
+                    </div>
+  
+                    <div class="campo">
+                      <label for="mail">Mail:</label>
+                      <input type="text" name="mail_emp" placeholder="Ingrese el email" autocomplete="off" required>
+                    </div>
+                  
+                    <div class="campo">
+                      <label for="ubicacion">Direccion:</label>
+                      <input type="text" name="ubicacion" placeholder="Ingrese la direccion" autocomplete="off" required>
+                    </div>
+                
+                    <div class="campo">
+                      <label for="estado">Estado:</label>
+                      <select name="status">
+                          <option value="activo">Activo</option>
+                          <option value="inactivo">Inactivo</option>
+                      </select>
+                    </div>
+                  
+                    <div class="campo">
+                      <label for="IVA">IVA:</label>
+                      <input type="number" name="IVA" placeholder="Ingrese el IVA" autocomplete="off" required>
+                    </div>
+                
+                    <div class="campo">
+                      <label for="fecha_inicio">Fecha de Inicio:</label>
+                      <input type="date" name="fecha_Inicio" placeholder="Ingrese la fecha de Inicio" autocomplete="off" required>
+                    </div>
+                
+                    <div class="campo">
+                      <label for="fecha_final">Fecha Final:</label>
+                      <input type="date" name="fecha_final" placeholder="Ingrese la fecha final" autocomplete="off" required>
+                    </div>
+  
+                    <div class="campo">
+                      <label for="user">Usuario-Login</label>
+                      <input type="text" name="user" placeholder="Ingrese el usuario" autocomplete="off" required>
+                    </div>
+  
+                    <div class="campo">
+                        <label for="password">Contraseña</label>
+                        <input type="text" name="password" placeholder="Ingrese el password" required>
+                    </div>
+                
+                    <button type="submit" class="btn btn-primary btn-lg Guardar">Crear</button>
+  
+                    <div>
+                      <p>
+                        <br>
+                        <a href="/portaladmin" class="text-white-50 fw-bold">Volver</a>
+                      </p>
+                    </div>
+                  </form>
               </div>
-              <span class="mdulo-de-cliente">
-              Módulo de cliente
-              </span>
-            </div>
-            <div class="container-18">
-              <div class="perido-faltante">
-              Perido faltante:
-              </div>
-              <div class="rectangle-14">
-                <input type="text" id="periodo-faltante">
-              </div>
+  
             </div>
           </div>
-          <div class="container-1">
-            <div>
-              <input type="checkbox" id="rectangle-17">
-            </div>
-            <span class="mdulo-de-compra">
-            Módulo de compra
-            </span>
-          </div>
-          <div class="container-9">
-            <div>
-              <input type="checkbox" id="rectangle-18">
-            </div>
-            <span class="mdulo-de-productos-en-stock">
-            Módulo de productos en stock
-            </span>
-          </div>
-          <div class="container-12">
-            <div class="container-8">
-              <div>
-                <input type="checkbox" id="rectangle-21">
-              </div>
-            </div>
-            <span class="modulo-de-informes">
-            Modulo de informes
-            </span>
-          </div>
-          <div class="container-16">
-            <div>
-              <input type="checkbox" id="rectangle-22">
-            </div>
-            <span class="modulo-de-stock">
-            Modulo de stock
-            </span>
-          </div>
+          <table>
+            <thead>
+                <tr>
+                    <th>ID Empresa</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Ubicación</th>
+                    <th>Estado</th>
+                    <th>IVA</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Fecha Final</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empresa in empresas %}
+                <tr>
+                    <td>{{ empresa.companyid }}</td>
+                    <td>{{ empresa.name_emp }}</td>
+                    <td>{{ empresa.mail_emp }}</td>
+                    <td>{{ empresa.ubicacion }}</td>
+                    <td>{{ empresa.status }}</td>
+                    <td>{{ empresa.IVA }}</td>
+                    <td>{{ empresa.fecha_Inicio }}</td>
+                    <td>{{ empresa.fecha_final }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
         </div>
-        <div class="line-1">
-        </div>
-        <div class="line-2">
-        </div>
-      </div>
-      
-      <div class="contenedor">
-        <h2>Lista de Empresas</h2>
-
-    <!-- Formulario de búsqueda -->
-    <form id="formulario-busqueda" onsubmit="return false;"> <!-- Evita redireccionar al servidor -->
-        <label for="buscar">Buscar por nombre o ID:</label>
-        <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
-    </form>
-
-    <!-- Tabla de empresas -->
-    <table>
-      <thead>
-          <tr>
-              <th>ID Empresa</th>
-              <th>Nombre</th>
-              <th>Correo</th>
-              <th>Ubicación</th>
-              <th>Estado</th>
-              <th>IVA</th>
-              <th>Fecha de Inicio</th>
-              <th>Fecha Final</th>
-          </tr>
-      </thead>
-      <tbody>
-          {% for empresa in empresas %}
-          <tr>
-              <td>{{ empresa.companyid }}</td>
-              <td>{{ empresa.name_emp }}</td>
-              <td>{{ empresa.mail_emp }}</td>
-              <td>{{ empresa.ubicacion }}</td>
-              <td>{{ empresa.status }}</td>
-              <td>{{ empresa.IVA }}</td>
-              <td>{{ empresa.fecha_Inicio }}</td>
-              <td>{{ empresa.fecha_final }}</td>
-          </tr>
-          {% endfor %}
-      </tbody>
-    </table>
 
       </div>
 
-      <div class="container-11">
-        <button type="button" class="btn btn-outline-dark btn-lg" id = "Volver">Cerrar</button>    
-          <button type="button" class="btn btn-primary btn-lg" id = "Guardar">Guardar</button>                    
-      </div>
-      <div class="line-3">
-      </div>
     </div>
   </body>
 </html>
