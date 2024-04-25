@@ -312,7 +312,6 @@ body {
     font-size: 30px;
     color: #FFFFFF;
     margin-top: 30px;
-    margin-left: 885px;
 }
 
 #espacio {
@@ -343,4 +342,11 @@ body {
     font-weight: 100;
     font-size: 30px;
     color: black;
+}
+
+#buton {
+    width: 1625px;
+    padding: 0;
+    text-align: right;
+    /* background: black; */
 }
