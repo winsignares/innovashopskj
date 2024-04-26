@@ -3,6 +3,8 @@ from config.db import db, app
 from models.EmpresaModel import EMP, EMPSchema
 from models.VendedoresModel import Vendedor, VendedorSchema
 from models.ClienteModel import Cliente, ClientesSchema
+from models.ProveedoresModel import Proveedor, ProveedoresSchema
+from models.ProductosModel import Productos, ProductoSchema
 
 ruta_empresa = Blueprint('ruta_empresa', __name__)
 
@@ -56,7 +58,9 @@ def portalempresa():
     if 'usuario' in session:
         vendedores = Vendedor.query.all()
         clientes = Cliente.query.all()
-        return render_template("./Portales/Portal_Empresa.html", usuario = session['usuario'], vendedores=vendedores, clientes=clientes)
+        proveedores = Proveedor.query.all()
+        productos = Productos.query.all()
+        return render_template("./Portales/Portal_Empresa.html", usuario = session['usuario'], vendedores=vendedores, clientes=clientes, proveedores=proveedores, productos=productos)
     else:
         return redirect('/')
 

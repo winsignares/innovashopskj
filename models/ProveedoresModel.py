@@ -9,7 +9,8 @@ class Proveedor(db.Model):
     direccion = db.Column(db.String(50))
     telefono = db.Column(db.Integer)
     
-    def __init__(self, nombre, email, direccion, telefono ):
+    def __init__(self,id, nombre, email, direccion, telefono ):
+      self.id = id
       self.nombre = nombre
       self.email = email
       self.direccion = direccion
