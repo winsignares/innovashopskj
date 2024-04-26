@@ -19,7 +19,7 @@ table {
 }
   
 thead {
-  background-color: #2A49FF;
+  background-color: #0C0A26;
   color: white;    
 }
   
@@ -78,4 +78,5 @@ button:hover {
 .containerform{
   display: flex;
   justify-content: space-between;
-}  
+}
+
