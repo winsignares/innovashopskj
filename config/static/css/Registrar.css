@@ -5,7 +5,7 @@
   margin: 0 4.9px 44px 0;
 }
 
-.campovendedor input {
+.campo input {
     overflow-wrap: break-word;
     font-weight: 400;
     font-size: 24px;
@@ -15,10 +15,22 @@
     background: #1E2126;
 }
 
-.campovendedor label  {
+.campo label  {
     font-weight: 400;
     font-size: 25px;
     color: black;
+}
+
+.cont{
+    padding: 3rem;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto
+}
+
+.campo select{
+    width: 100%; 
+    height: 50px;
 }
 
 .Guardar {
@@ -30,7 +42,7 @@
     margin-top: 20px;
 }
 
-.campovendedor{
+.campo{
     padding: 0.8rem;
 }
 
@@ -50,7 +62,7 @@
 .modal-contenido {
     background: white;
     padding: 2rem;
-    width: 80vh; 
+    width: 100vh; 
     height: 90vh; 
     overflow-y: auto;
     border-radius: 10px;
