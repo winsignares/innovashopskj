@@ -21,6 +21,9 @@
   </head>
 
   <body>
+    <div>
+      <button type="button" class="btn btn-outline-secondary" id = "Volver">Cerrar sesión</button>
+    </div>
 
       <div class="cont" >
         <h2>Portal Administrativo</h2>
@@ -30,8 +33,8 @@
             <div class="containerform">
                 <div class="formulario">
                       <form id="formulario-busqueda" onsubmit="return false;">
-                          <label for="buscar">ID:</label>
-                          <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
+                          <label id = "id" for="buscar"> <div id = "id2">ID:</div></label>
+                          <input type="text" id="textbox" name="termino" placeholder="Ingrese nombre o ID" required>
                       </form>
                 </div>
                 <div class="registrovendedor">
@@ -108,37 +111,72 @@
                     </div>
                   </form>
               </div>
-  
+
             </div>
           </div>
-          <table>
-            <thead>
-                <tr>
-                    <th>ID Empresa</th>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Ubicación</th>
-                    <th>Estado</th>
-                    <th>IVA</th>
-                    <th>Fecha de Inicio</th>
-                    <th>Fecha Final</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for empresa in empresas %}
-                <tr>
-                    <td>{{ empresa.companyid }}</td>
-                    <td>{{ empresa.name_emp }}</td>
-                    <td>{{ empresa.mail_emp }}</td>
-                    <td>{{ empresa.ubicacion }}</td>
-                    <td>{{ empresa.status }}</td>
-                    <td>{{ empresa.IVA }}</td>
-                    <td>{{ empresa.fecha_Inicio }}</td>
-                    <td>{{ empresa.fecha_final }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-          </table>
+
+          <div id = "container">
+            <table>
+              <thead>
+                  <tr>
+                      <th>ID Empresa</th>
+                      <th>Nombre</th>
+                      <th>Correo</th>
+                      <th>Ubicación</th>
+                      <th>Estado</th>
+                      <th>IVA</th>
+                      <th>Fecha de Inicio</th>
+                      <th>Fecha Final</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for empresa in empresas %}
+                  <tr>
+                      <td>{{ empresa.companyid }}</td>
+                      <td>{{ empresa.name_emp }}</td>
+                      <td>{{ empresa.mail_emp }}</td>
+                      <td>{{ empresa.ubicacion }}</td>
+                      <td>{{ empresa.status }}</td>
+                      <td>{{ empresa.IVA }}</td>
+                      <td>{{ empresa.fecha_Inicio }}</td>
+                      <td>{{ empresa.fecha_final }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+            </table>
+
+          </div>
+          <div id = "modulos">
+            <div id = "modulosFormato">
+              <input type="checkbox" id = "box">
+              Modulo de descuento          
+            </div> 
+            <div id = "modulosFormato2">
+              <input type="checkbox" id = "box">
+              Modulo de Cliente          
+            </div>    
+            <div id = "modulosFormato2">
+              <input type="checkbox" id = "box">
+              Modulo de compra            
+            </div>          
+
+          </div>
+          <div id = "modulos">
+            <div id = "modulosFormato">
+              <input type="checkbox" id = "box">
+              Modulo de existencia       
+            </div> 
+            <div id = "modulosFormato2">
+              <input type="checkbox" id = "box">
+              Modulo de informes   
+            </div>    
+            <div id = "modulosFormato">
+              <input type="checkbox" id = "box">
+              Modulo de stock <label style="color: white;">...</label>
+                       
+            </div>  
+          </div>
+          
         </div>
 
       </div>
