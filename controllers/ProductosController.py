@@ -1,22 +1,22 @@
 from flask import Blueprint, render_template, request, redirect
 from config.db import app, db, ma
-from models.ProductosModel import Articulos, ArticuloSchema
+from models.ProductosModel import Productos, ProductoSchema
 
-ruta_articulos = Blueprint("route_articulos", __name__)
+ruta_productos = Blueprint("route_productos", __name__)
 
-articulo_schema= ArticuloSchema()
-articulos_schema= ArticuloSchema(many=True)
+producto_schema= ProductoSchema()
+productos_schema= ProductoSchema(many=True)
 
-@app.route('/Articulos')
+@app.route('/Productos')
 def indexarticulos():
     return render_template('articulos.html')
 
-@app.route('/actualizar', methods=['POST'])
+@app.route('/registrarproductos', methods=['POST'])
 def actualizar():
     id = request.form['id']
     Nombre = request.form['Nombre']
     Precio = request.form['Precio']
-    articulo = Articulos.query.get(id)
+    articulo = Productos.query.get(id)
     articulo.Nombre = Nombre
     articulo.Precio = Precio
     db.session.commit()

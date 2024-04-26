@@ -1,4 +1,6 @@
+{% extends "login.html" %}
 
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,321 +9,73 @@
     <title>Dashboard</title>
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../static/css/portalempresa.css">
+    <link rel="stylesheet" href="../static/css/Portales.css">
+    <link rel="stylesheet" href="../static/css/Tablas.css">
+    <link rel="stylesheet" href="../static/css/Registrar.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../static/js/app.js" defer></script>
+    <script src="../static/js/ventanasemergentes.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script src="../static/js/pdf.js" defer></script>
+
 </head>
-
-<style>
-    :root {
-    --blanco: #E0E0E0;
-    --azul-opacidad: #184463;
-    --bg-menu: #003053;
-    --bg-body: #C7E1FF;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Quicksand', sans-serif;
-    color: var(--blanco);
-    display: flex;
-    margin: 0;
-    padding: 0;
-    justify-content: flex-start;
-    height: 100vh;
-}
-
-.menu-dashboard {
-    max-width: 150px;
-    height: 100vh;
-    background: #0C0A26;
-    padding: 30px; 
-    transition: max-width .3s ease;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.top-menu {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.top-menu .logo {
-    display: flex;
-    align-items: center;
-}
-
-.top-menu .logo img {
-    width: 40px;
-    transition: width .3s ease;
-}
-
-.top-menu .logo span {
-    font-size: 20px;
-    margin-left: 20px;
-    display: none;
-}
-
-.top-menu .toggle {
-    width: 30px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-}
-
-.top-menu .toggle i {
-    font-size: 35px;
-}
-
-
-.input-search {
-    width: 100%;
-    margin: 50px 0;
-    background-color: var(--azul-opacidad);
-    padding: 1rem;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-}
-
-.input-search i {
-    font-size: 30px;
-    margin-right: 25px;
-}
-
-.input-search .input {
-    border: none;
-    outline: none;
-    background-color: transparent;
-    width: 100%;
-    height: 30px;
-    color: var(--blanco);
-    font-size: 22px;
-    display: none;
-}
-
-.menu .enlace {
-    width: 100%;
-    padding: 20px 0 20px 17px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    margin-top: 200px;
-    cursor: pointer;
-    font-size: 20px;
-    transition: all .3s ease;
-}
-
-.menu .enlace:hover {
-    background: var(--azul-opacidad);
-}
-
-.menu .enlace i {
-    margin-right: 20px;
-    font-size: 25px;
-    color: var(--blanco);
-}
-
-.menu .enlace span {
-    opacity: 0;
-    transition: opacity .3s ease;
-    color: var(--blanco);
-}
-  
-
-.menu-dashboard.open {
-    max-width: 100%;
-}
-
-.menu-dashboard.open .top-menu .logo span {
-    display: block;
-}
-
-.menu-dashboard.open .input-search
-.menu-dashboard.open .menu .enlace {
-    width: auto;
-}
-
-.menu-dashboard.open .input-search .input {
-    display: block;
-}
-
-.menu-dashboard.open .menu .enlace {
-    padding: 20px;
-}
-
-.menu-dashboard.open .menu .enlace span {
-    opacity: 1;
-}
-
-.main--content {
-    position: relative;
-    background: var(--blanco);
-    width: 100%;
-    height: auto;
-    padding: 2rem;
-    margin: 0;
-    overflow-y: auto;
-}
-
-.header--wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 20px 2rem;
-    margin: 0;
-}
-
-.pagina {
-    position: unset;
-    background: var(--blanco);
-    width: 100%;
-    height: max-content;
-    display: none;
-    padding: 0; 
-    box-sizing: border-box; 
-    margin: 0;
-    padding-top: 20px;
-}
-
-.pagina.Proveedores {
-    display: block;
-}
-
-.factura {
-   margin-top: 2rem;
-   margin-left: 5rem;
-}
-
-.dentro {
-    color: black;
-    background: #ffffff;
-    border-radius: 10px;
-    overflow-y: auto;
-    height: 80vh;
-    padding: 3rem;
-}
-
-.redireccion{
-    padding: 0.1rem;
-    margin: 0;
-}
-
-.container {
-    display: contents;
-}
-
-.butona {
-  background-color: #0062ff;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  padding-top: 0.9rem;
-  padding-bottom: 0.9rem;
-  color: #ffffff;
-  font-weight: 700;
-  border-radius: 6px;
-  margin-top: 30px;
-  border: none;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.9);
-  margin-bottom: 50px;
-
-}
-
-.butona:active {
-    transform: translateY(2px); 
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  }
-.PDF{
-    margin-left:100px;
-    margin-top: 100px;
-}
-
-.cont{
-    display: flex;
-}
-
-</style>
-
 <body>
     <div class="menu-dashboard open">
         <div class="top-menu">
             <div class="logo">
-                <img src="s-png-28667.png" width="20px"  alt="">
-                <span></span>
+                <img src="../static/img/s-png-28667.png" alt="">
+                <span>Innovashop</span>
             </div>
-            <div class="">
-
+            <div class="toggle">
+                <i class='bx bx-menu'></i>
             </div>
         </div>
-
+        <div class="input-search">
+            <i class='bx bx-search-alt' ></i>
+            <input type="text" class="input" placeholder="Buscar">
+        </div>
         <div class="menu">
 
-            <div class="enlace" data-pagina="Modulo-cliente">
-                <span>Compras</span>
+            <div class="enlace" data-pagina="Cliente">
+                <i class='bx bxs-user'></i>
+                <span>Facturas</span>
             </div>
-
-            
+    
             <br><br>
             <div class="enlace">
                 <a onclick="salir()">
+                    <div class="bx bx-log-out"></div>
                     <span>Salir</span>
                 </a>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="main--content">
-            <div class="header--wrapper">
-                <div class="header--tittle">
-                    <span style="color: black;">Portal de cliente</span>
+
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--tittle">
+                <span style="color: black;">Portal De Cliente</span>
+            </div>
+
+            <div class="contpdf">
+                <div class="pdf">
+                    <img src="../static/img/PDF.png" alt="">
+                </div>
+                <div class="btnpdf">
+                    <button>Descargar PDF</button>
                 </div>
             </div>
-            
-    <div class="cont">            
-        <div class="factura">
-
-            <img src="factura.png" width="400px"  alt="">
-        
         </div>
 
-        <div class="PDF"> 
-
-            <div class="btn">
-                <button
-                  class="butona"
-                  type="button"
-                >
-                  Descaragar PDF
-                </button>
+        <div class="pagina Cliente">
+            <div class="dentro cliente">
+                <div class="factura">
+                    <img src="../static/img/factura.jpg" alt="">
+                </div>     
             </div>
-            <img src="PDF.png" alt="" width="200px">
-
         </div>
-
-    </div>
-
-
-
-
-    
-            
-
-
-
 
     </div>
 </body>
 </html>
-
+{% endblock %}

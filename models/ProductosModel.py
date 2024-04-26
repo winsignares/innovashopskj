@@ -1,6 +1,6 @@
 from config.db import db, ma, app
 
-class Articulos (db.Model):
+class Productos (db.Model):
     __tablename__ = "Articulo"
     
     id = db.Column(db.Integer, primary_key=True)
@@ -14,6 +14,6 @@ class Articulos (db.Model):
 with app.app_context():
     db.create_all()
 
-class ArticuloSchema(ma.Schema):
+class ProductoSchema(ma.Schema):
     class Meta:
         fields = ('id', 'Nombre', 'Precio')

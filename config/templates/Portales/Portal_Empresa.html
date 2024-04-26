@@ -61,368 +61,366 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="main--content">
-            <div class="header--wrapper">
-                <div class="header--tittle">
-                    <span style="color: black;">Portal De Empresas</span>
-                </div>
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--tittle">
+                <span style="color: black;">Portal De Empresas</span>
             </div>
+        </div>
 
-            <div class="pagina Proveedores">
-                <div class="dentro">
-                    <div class="contenedor">                      
-                        <div class="containerform">
-                            <div class="formulario">
-                                <form id="formulario-busqueda" onsubmit="return false;">
-                                    <label for="buscar">ID:</label>
-                                    <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
-                                </form>
-                            </div>
-                            <div class="registroprovedor">
-                                <button class="abrir-modal" data-modal-id="modal-proveedores">Agregar un proveedor</button>
-
-                            </div>
+        <div class="pagina Proveedores">
+            <div class="dentro">
+                <div class="contenedor">                      
+                    <div class="containerform">
+                        <div class="formulario">
+                            <form id="formulario-busqueda" onsubmit="return false;">
+                                <label for="buscar">ID:</label>
+                                <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
+                            </form>
                         </div>
+                        <div class="registroprovedor">
+                            <button class="abrir-modal" data-modal-id="modal-proveedores">Agregar un proveedor</button>
 
-                        <div id="modal-proveedores" class="modal">
-                            <div class="modal-contenido">
-                                <span class="cerrar-modal">&times;</span>
-                                <h2>Registro Proveedores</h2>
+                        </div>
+                    </div>
+
+                    <div id="modal-proveedores" class="modal">
+                        <div class="modal-contenido">
+                            <span class="cerrar-modal">&times;</span>
+                            <h2>Registro Proveedores</h2>
+                            
+                            <form action="/registroproveedor" method="post">
+
+                                <div class="campo">
+                                    <label for="id">ID</label>
+                                    <input type="number" name="id" placeholder="Ingrese ID del proveedor" required autocomplete="off">
+                                </div>
                                 
-                                <form action="/registroproveedor" method="post">
+                                <div class="campo">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" name="nombre" placeholder="Ingrese nombre" required autocomplete="off">
+                                </div>
+                                
+                                <div class="campo">
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email" placeholder="Ingrese email" required autocomplete="off">
+                                </div>
+                
+                                <div class="campo">
+                                    <label for="direccion">Direccion</label>
+                                    <input type="text" name="direccion" placeholder="Ingrese direccion" required autocomplete="off">
+                                </div>
 
-                                    <div class="campo">
-                                        <label for="id">ID</label>
-                                        <input type="number" name="id" placeholder="Ingrese ID del proveedor" required autocomplete="off">
-                                    </div>
-                                    
-                                    <div class="campo">
-                                        <label for="nombre">Nombre</label>
-                                        <input type="text" name="nombre" placeholder="Ingrese nombre" required autocomplete="off">
-                                    </div>
-                                    
-                                    <div class="campo">
-                                        <label for="email">Email</label>
-                                        <input type="text" name="email" placeholder="Ingrese email" required autocomplete="off">
-                                    </div>
+                                <div class="campo">
+                                    <label for="telefono">telefono</label>
+                                    <input type="number" name="telefono" placeholder="Ingrese numero telefonico" required autocomplete="off">
+                                </div>
                     
-                                    <div class="campo">
-                                        <label for="direccion">Direccion</label>
-                                        <input type="text" name="direccion" placeholder="Ingrese direccion" required autocomplete="off">
-                                    </div>
-
-                                    <div class="campo">
-                                        <label for="telefono">telefono</label>
-                                        <input type="number" name="telefono" placeholder="Ingrese numero telefonico" required autocomplete="off">
-                                    </div>
-                        
-                                    <div>
-                                        <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar proveedor</button>   
-                                    </div>
-                                </form>
-                            </div>
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar proveedor</button>   
+                                </div>
+                            </form>
                         </div>
                     </div>
-                        
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID Proveedores</th>
-                                <th>Nombre</th>
-                                <th>Correo</th>
-                                <th>Direccion</th>
-                                <th>Telefono</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for proveedor in proveedores %}
-                                <tr>
-                                    <td>{{ proveedor.id }}</td>
-                                    <td>{{ proveedor.nombre }}</td>
-                                    <td>{{ proveedor.email}}</td>
-                                    <td>{{ proveedor.direccion }}</td>
-                                    <td>{{ proveedor.telefono }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table> 
                 </div>
-            </div>
-    
-            <div class="pagina Vendedores">
-                <div class="redireccion" style="text-align: right;">
-                    <a href="/Portal_Vendedor">Ir a portal del vendedor -></a>
-                </div>
-
-                <div class="dentro">
-                    <div class="contenedor">                      
-                        <div class="containerform">
-                            <div class="formulario">
-                                <form id="formulario-busqueda" onsubmit="return false;">
-                                    <label for="buscar">ID:</label>
-                                    <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
-                                </form>
-                            </div>
-                            <div class="registrovendedor">
-                                <button class="abrir-modal" data-modal-id="modal-vendedores">Agregar un vendedor</button>
-                            </div>
-                        </div>
-
-                        <div id="modal-vendedores" class="modal">
-                            <div class="modal-contenido">
-                                <span class="cerrar-modal">&times;</span>
-                                <h2>Registro Vendedores</h2>
-                                
-                                <form action="/registrovendedor" method="post">
-
-                                    <div class="campo">
-                                        <label for="id">ID</label>
-                                        <input type="number" name="id" placeholder="Ingrese ID de vendedor" required autocomplete="off">
-                                    </div>
-                                    
-                                    <div class="campo">
-                                        <label for="nombre">Nombre</label>
-                                        <input type="text" name="nombre" placeholder="Ingrese nombre" required autocomplete="off">
-                                    </div>
-                                    
-                                    <div class="campo">
-                                        <label for="email">Email</label>
-                                        <input type="text" name="email" placeholder="Ingrese email" required autocomplete="off">
-                                    </div>
-                                    
-                                    <div class="campo">
-                                        <label for= "fecha_inicio">Fecha de inicio</label>
-                                        <input type="date" name="fecha_inicio" placeholder="DD/MM/AA" required autocomplete="off">
-                                    </div>
-
-                                    <div class="campo">
-                                        <label for="user">Usuario-Login</label>
-                                        <input type="text" name="user" placeholder="Ingrese el usuario" required>
-                                    </div>
-
-                                    <div class="campo">
-                                        <label for="password">Contraseña</label>
-                                        <input type="text" name="password" placeholder="Ingrese el password" required>
-                                    </div>
-                        
-                                    <div>
-                                        <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar vendedor</button>   
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                        
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID Vendedores</th>
-                                <th>Nombre</th>
-                                <th>Correo</th>
-                                <th>Fecha de Inicio</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for vendedor in vendedores %}
-                                <tr>
-                                    <td>{{ vendedor.id }}</td>
-                                    <td>{{ vendedor.nombre }}</td>
-                                    <td>{{ vendedor.email}}</td>
-                                    <td>{{ vendedor.fecha_inicio }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table> 
-                </div>
-            </div>
-            
-            <div class="pagina Productos">
-                <div class="dentro">
-                    <div class="contenedor">                      
-                        <div class="containerform">
-                            <div class="formulario">
-                                <form id="formulario-busqueda" onsubmit="return false;">
-                                    <label for="buscar">ID:</label>
-                                    <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
-                                </form>
-                            </div>
-                            <div class="registroproducto">
-                                <button class="abrir-modal" data-modal-id="modal-productos">Agregar un producto</button>
-                            </div>
-                        </div>
-
-                        <div id="modal-productos" class="modal">
-                            <div class="modal-contenido">
-                                <span class="cerrar-modal">&times;</span>
-                                <h2>Registro Productos</h2>
-                                
-                                <form action="/registroproducto" method="post">
-
-                                    <div class="campo">
-                                        <label for="id">ID</label>
-                                        <input type="number" name="id" placeholder="Ingrese ID del producto" required autocomplete="off">
-                                    </div>
-                                    
-                                    <div class="campo">
-                                        <label for="nombre">Nombre</label>
-                                        <input type="text" name="nombre" placeholder="Ingrese nombre" required autocomplete="off">
-                                    </div>
-                                    
-                                    <div class="campo">
-                                        <label for="preciouni">Precio por unidad</label>
-                                        <input type="text" name="preciouni" placeholder="Ingrese su precio" required autocomplete="off">
-                                    </div>
                     
-                                    <div class="campo">
-                                        <label for="alternos">Productos alternos</label>
-                                        <input type="text" name="alternos" placeholder="Ingrese productos" required autocomplete="off">
-                                    </div>
-
-                                    <div class="campo">
-                                        <label for="precioventa">Precio de venta</label>
-                                        <input type="text" name="precioventa" placeholder="Ingrese precio de venta" required autocomplete="off">
-                                    </div>
-
-                                    <div class="campo">
-                                        <label for="cantidad">Cantidad</label>
-                                        <input type="number" name="cantidad" placeholder="Ingrese cantidad de productos" required autocomplete="off">
-                                    </div>
-
-                                    <div class="campo">
-                                        <label for="cantidadmin">Cantidad minima en stock</label>
-                                        <input type="number" name="cantidadmin" placeholder="Ingrese cantidad de productos" required autocomplete="off">
-                                    </div>
-
-                                    <div class="campo">
-                                        <label for="iva">Iva</label>
-                                        <input type="checkbox" name="iva" required autocomplete="off">
-                                    </div>
-                        
-                                    <div>
-                                        <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar producto</button>   
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                        
-                    <table>
-                        <thead>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Proveedores</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for proveedor in proveedores %}
                             <tr>
-                                <th>ID Productos</th>
-                                <th>Nombre</th>
-                                <th>Precio Unitario</th>
-                                <th>Productos alternos</th>
-                                <th>Precio de venta</th>
-                                <th>Cantidad</th>
-                                <th>Cantidad minima</th>
-
-
+                                <td>{{ proveedor.id }}</td>
+                                <td>{{ proveedor.nombre }}</td>
+                                <td>{{ proveedor.email}}</td>
+                                <td>{{ proveedor.direccion }}</td>
+                                <td>{{ proveedor.telefono }}</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {% for producto in productos %}
-                                <tr>
-                                    <td>{{ producto.id }}</td>
-                                    <td>{{ producto.nombre }}</td>
-                                    <td>{{ producto.email}}</td>
-                                    <td>{{ producto.fecha_inicio }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table> 
-                </div>
+                        {% endfor %}
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+
+        <div class="pagina Vendedores">
+            <div class="redireccion" style="text-align: right;">
+                <a href="/Portal_Vendedor">Ir a portal del vendedor -></a>
             </div>
 
-            <div class="pagina Clientes">
-                <div class="dentro">
-                    <div class="contenedor">                      
-                        <div class="containerform">
-                            <div class="formulario">
-                                <form id="formulario-busqueda" onsubmit="return false;">
-                                    <label for="buscar">ID:</label>
-                                    <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
-                                </form>
-                            </div>
-                            <div class="registroprovedor">
-                                <button class="abrir-modal" data-modal-id="modal-clientes">Agregar un cliente</button>
-                            </div>
+            <div class="dentro">
+                <div class="contenedor">                      
+                    <div class="containerform">
+                        <div class="formulario">
+                            <form id="formulario-busqueda" onsubmit="return false;">
+                                <label for="buscar">ID:</label>
+                                <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
+                            </form>
                         </div>
-
-                        <div id="modal-clientes" class="modal">
-                            <div class="modal-contenido">
-                                <span class="cerrar-modal">&times;</span>
-                                <h2>Registro Clientes</h2>
-                                
-                                <form action="/registrocliente" method="post">
-
-                                    <div class="campo">
-                                        <label for="id">ID</label>
-                                        <input type="number" name="id" placeholder="Ingrese ID del cliente" required autocomplete="off">
-                                    </div>
-                                    
-                                    <div class="campo">
-                                        <label for="nombre">Nombre</label>
-                                        <input type="text" name="nombre" placeholder="Ingrese nombre" required autocomplete="off">
-                                    </div>
-                                    
-                                    <div class="campo">
-                                        <label for="email">Email</label>
-                                        <input type="text" name="email" placeholder="Ingrese email" required autocomplete="off">
-                                    </div>
-                    
-                                    <div class="campo">
-                                        <label for="direccion">Direccion</label>
-                                        <input type="text" name="direccion" placeholder="Ingrese direccion" required autocomplete="off">
-                                    </div>
-
-                                    <div class="campo">
-                                        <label for="telefono">telefono</label>
-                                        <input type="number" name="telefono" placeholder="Ingrese numero telefonico" required autocomplete="off">
-                                    </div>
-
-                                    <div class="campo">
-                                        <label for="user">Usuario-Login</label>
-                                        <input type="text" name="user" placeholder="Ingrese usuario" required autocomplete="off">
-                                    </div>
-
-                                    <div class="campo">
-                                        <label for="password">Contraseña</label>
-                                        <input type="text" name="password" placeholder="Ingrese Contraseña" required autocomplete="off">
-                                    </div>
-                        
-                                    <div>
-                                        <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar cliente</button>   
-                                    </div>
-                                </form>
-                            </div>
+                        <div class="registrovendedor">
+                            <button class="abrir-modal" data-modal-id="modal-vendedores">Agregar un vendedor</button>
                         </div>
                     </div>
-                        
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID Clientes</th>
-                                <th>Nombre</th>
-                                <th>Correo</th>
-                                <th>Direccion</th>
-                                <th>Telefono</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for cliente in clientes %}
-                                <tr>
-                                    <td>{{ cliente.id }}</td>
-                                    <td>{{ cliente.nombre }}</td>
-                                    <td>{{ cliente.email}}</td>
-                                    <td>{{ cliente.direccion }}</td>
-                                    <td>{{ cliente.telefono }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table> 
+
+                    <div id="modal-vendedores" class="modal">
+                        <div class="modal-contenido">
+                            <span class="cerrar-modal">&times;</span>
+                            <h2>Registro Vendedores</h2>
+                            
+                            <form action="/registrovendedor" method="post">
+
+                                <div class="campo">
+                                    <label for="id">ID</label>
+                                    <input type="number" name="id" placeholder="Ingrese ID de vendedor" required autocomplete="off">
+                                </div>
+                                
+                                <div class="campo">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" name="nombre" placeholder="Ingrese nombre" required autocomplete="off">
+                                </div>
+                                
+                                <div class="campo">
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email" placeholder="Ingrese email" required autocomplete="off">
+                                </div>
+                                
+                                <div class="campo">
+                                    <label for= "fecha_inicio">Fecha de inicio</label>
+                                    <input type="date" name="fecha_inicio" placeholder="DD/MM/AA" required autocomplete="off">
+                                </div>
+
+                                <div class="campo">
+                                    <label for="user">Usuario-Login</label>
+                                    <input type="text" name="user" placeholder="Ingrese el usuario" required>
+                                </div>
+
+                                <div class="campo">
+                                    <label for="password">Contraseña</label>
+                                    <input type="text" name="password" placeholder="Ingrese el password" required>
+                                </div>
+                    
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar vendedor</button>   
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
+                    
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Vendedores</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Fecha de Inicio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for vendedor in vendedores %}
+                            <tr>
+                                <td>{{ vendedor.id }}</td>
+                                <td>{{ vendedor.nombre }}</td>
+                                <td>{{ vendedor.email}}</td>
+                                <td>{{ vendedor.fecha_inicio }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+        
+        <div class="pagina Productos">
+            <div class="dentro">
+                <div class="contenedor">                      
+                    <div class="containerform">
+                        <div class="formulario">
+                            <form id="formulario-busqueda" onsubmit="return false;">
+                                <label for="buscar">ID:</label>
+                                <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
+                            </form>
+                        </div>
+                        <div class="registroproducto">
+                            <button class="abrir-modal" data-modal-id="modal-productos">Agregar un producto</button>
+                        </div>
+                    </div>
+
+                    <div id="modal-productos" class="modal">
+                        <div class="modal-contenido">
+                            <span class="cerrar-modal">&times;</span>
+                            <h2>Registro Productos</h2>
+                            
+                            <form action="/registroproducto" method="post">
+
+                                <div class="campo">
+                                    <label for="id">ID</label>
+                                    <input type="number" name="id" placeholder="Ingrese ID del producto" required autocomplete="off">
+                                </div>
+                                
+                                <div class="campo">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" name="nombre" placeholder="Ingrese nombre" required autocomplete="off">
+                                </div>
+                                
+                                <div class="campo">
+                                    <label for="preciouni">Precio por unidad</label>
+                                    <input type="text" name="preciouni" placeholder="Ingrese su precio" required autocomplete="off">
+                                </div>
+                
+                                <div class="campo">
+                                    <label for="alternos">Productos alternos</label>
+                                    <input type="text" name="alternos" placeholder="Ingrese productos" required autocomplete="off">
+                                </div>
+
+                                <div class="campo">
+                                    <label for="precioventa">Precio de venta</label>
+                                    <input type="text" name="precioventa" placeholder="Ingrese precio de venta" required autocomplete="off">
+                                </div>
+
+                                <div class="campo">
+                                    <label for="cantidad">Cantidad</label>
+                                    <input type="number" name="cantidad" placeholder="Ingrese cantidad de productos" required autocomplete="off">
+                                </div>
+
+                                <div class="campo">
+                                    <label for="cantidadmin">Cantidad minima en stock</label>
+                                    <input type="number" name="cantidadmin" placeholder="Ingrese cantidad de productos" required autocomplete="off">
+                                </div>
+
+                                <div class="campo">
+                                    <label for="iva">Iva</label>
+                                    <input type="checkbox" name="iva" required autocomplete="off">
+                                </div>
+                    
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar producto</button>   
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                    
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Productos</th>
+                            <th>Nombre</th>
+                            <th>Precio Unitario</th>
+                            <th>Productos alternos</th>
+                            <th>Precio de venta</th>
+                            <th>Cantidad</th>
+                            <th>Cantidad minima</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producto in productos %}
+                            <tr>
+                                <td>{{ producto.id }}</td>
+                                <td>{{ producto.nombre }}</td>
+                                <td>{{ producto.email}}</td>
+                                <td>{{ producto.fecha_inicio }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+
+        <div class="pagina Clientes">
+            <div class="dentro">
+                <div class="contenedor">                      
+                    <div class="containerform">
+                        <div class="formulario">
+                            <form id="formulario-busqueda" onsubmit="return false;">
+                                <label for="buscar">ID:</label>
+                                <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
+                            </form>
+                        </div>
+                        <div class="registroprovedor">
+                            <button class="abrir-modal" data-modal-id="modal-clientes">Agregar un cliente</button>
+                        </div>
+                    </div>
+
+                    <div id="modal-clientes" class="modal">
+                        <div class="modal-contenido">
+                            <span class="cerrar-modal">&times;</span>
+                            <h2>Registro Clientes</h2>
+                            
+                            <form action="/registrocliente" method="post">
+
+                                <div class="campo">
+                                    <label for="id">ID</label>
+                                    <input type="number" name="id" placeholder="Ingrese ID del cliente" required autocomplete="off">
+                                </div>
+                                
+                                <div class="campo">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" name="nombre" placeholder="Ingrese nombre" required autocomplete="off">
+                                </div>
+                                
+                                <div class="campo">
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email" placeholder="Ingrese email" required autocomplete="off">
+                                </div>
+                
+                                <div class="campo">
+                                    <label for="direccion">Direccion</label>
+                                    <input type="text" name="direccion" placeholder="Ingrese direccion" required autocomplete="off">
+                                </div>
+
+                                <div class="campo">
+                                    <label for="telefono">telefono</label>
+                                    <input type="number" name="telefono" placeholder="Ingrese numero telefonico" required autocomplete="off">
+                                </div>
+
+                                <div class="campo">
+                                    <label for="user">Usuario-Login</label>
+                                    <input type="text" name="user" placeholder="Ingrese usuario" required autocomplete="off">
+                                </div>
+
+                                <div class="campo">
+                                    <label for="password">Contraseña</label>
+                                    <input type="text" name="password" placeholder="Ingrese Contraseña" required autocomplete="off">
+                                </div>
+                    
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar cliente</button>   
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                    
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Clientes</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cliente in clientes %}
+                            <tr>
+                                <td>{{ cliente.id }}</td>
+                                <td>{{ cliente.nombre }}</td>
+                                <td>{{ cliente.email}}</td>
+                                <td>{{ cliente.direccion }}</td>
+                                <td>{{ cliente.telefono }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table> 
             </div>
         </div>
     </div>
