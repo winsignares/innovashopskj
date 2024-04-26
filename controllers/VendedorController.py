@@ -1,12 +1,12 @@
 from flask import Blueprint, Flask, render_template,json, jsonify, redirect, session, request
 from config.db import app, db, ma
 from models.VendedoresModel import Vendedor, VendedorSchema
+from models.ClienteModel import Cliente, ClientesSchema
 
 ruta_vendedor = Blueprint("route_vendedor", __name__)
 
 vendedor_schema = VendedorSchema()
 vendedores_schema = VendedorSchema(many=True)
-
 
 @app.route('/registrovendedor', methods=['POST'])
 def registrar_vendedor():
@@ -46,6 +46,7 @@ def registrar_vendedor():
 def portalvendedor():
     
     if 'usuario' in session:
-        return render_template("./Portales/Portal_Vendedores.html")
+        clientes = Cliente.query.all()
+        return render_template("./Portales/Portal_Vendedores.html", clientes=clientes)
     else:
         return redirect('/')

@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect
 from config.db import app, db, ma
-from models.ArticulosModel import Articulos, ArticuloSchema
+from models.ProductosModel import Articulos, ArticuloSchema
 
 ruta_articulos = Blueprint("route_articulos", __name__)
 

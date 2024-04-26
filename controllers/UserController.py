@@ -14,9 +14,9 @@ users_schema = UsersSchema(many=True)
 def ingresar():
     user = request.form['user'].replace(' ', '')
     password = request.form['password']
-    user1 = db.session.query(User).filter(User.user == user, User.password == password).first()
-    user2 = db.session.query(Vendedor).filter(Vendedor.user == user, Vendedor.password == password).first()
-    user3 = db.session.query(EMP).filter(EMP.user == user, EMP.password == password).first()
+    user1 = db.session.query(User).filter(User.user == user, User.password == password).all()
+    user2 = db.session.query(Vendedor).filter(Vendedor.user == user, Vendedor.password == password).all()
+    user3 = db.session.query(EMP).filter(EMP.user == user, EMP.password == password).all()
      
     if user1:
         resultado1 = user_schema.dump(user1)
@@ -35,12 +35,3 @@ def ingresar():
         return redirect('/Portal_Empresa')
     else:
         return redirect('/')
-    
-@app.route('/Portal_Cliente', methods=['GET'])
-def portalcliente():
-    
-    if 'usuario' in session:
-        return render_template("./Portales/Portal_Cliente.html", usuario = session['usuario'])
-    else:
-        return redirect('/')
-    
