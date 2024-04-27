@@ -75,14 +75,14 @@
             </div>
             
 
-            <div class="pagina Modulo-cliente">
+            <div class="pagina Modulo-cliente"> 
                 <div class="dentro">
                     <div class="contenedor">                      
                         <div class="containerform">
                             <div class="formulario">
                                 <form id="formulario-busqueda" onsubmit="return false;">
-                                    <label for="buscar">ID:</label>
-                                    <input type="text" id="buscar" name="termino" placeholder="Ingrese nombre o ID" required>
+                                    <label id = "id" style="margin-right: -4px"> <div id = "id2">ID:</div></label>
+                                    <input type="text" id="textbox" name="termino" placeholder="Ingrese nombre o ID" required >
                                 </form>
                             </div>
                             <div class="registroprovedor">
@@ -92,7 +92,7 @@
 
                         <div id="modal-clientes" class="modal">
                             <div class="modal-contenido">
-                                <span class="cerrar-modal">&times;</span>
+                                <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
                                 <h2>Registro Clientes</h2>
                                 
                                 <form action="/registrocliente" method="post">
@@ -165,8 +165,169 @@
                 </div>
             </div>
     
-            <div class="pagina Gestionar-productos">
-                <div class="dentro">Gestionar productos</div>
+            <div class="pagina Gestionar-productos"> 
+                <div class="dentro">                    
+                    <div class="contenedor">                      
+                        <div class="containerform">
+                            <div class="formulario">
+                                <form id="formulario-busqueda" onsubmit="return false;">
+                                    <label id = "id" style="margin-right: -4px"> <div id = "id2">ID:</div></label>
+                                    <input type="text" id="textbox" name="termino" placeholder="Ingrese nombre o ID" required >
+                                </form>
+                            </div>
+                            <div class="registroproducto">
+                                <button class="abrir-modal" data-modal-id="modal-Actproductos">Actualizar un producto</button>
+                            </div>
+                            <div class="registroproducto">
+                                <button class="abrir-modal" data-modal-id="modal-productos">Agregar un producto</button>
+                            </div>
+                        </div>
+    
+                        <div id="modal-productos" class="modal">
+                            <div class="modal-contenido">
+                                <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
+                                <h2>Registro Productos</h2>
+                                
+                                <form action="/registroproducto" method="post">
+    
+                                    <div class="campo">
+                                        <label for="id">ID</label>
+                                        <input type="number" name="id" placeholder="Ingrese ID del producto" required autocomplete="off">
+                                    </div>
+                                    
+                                    <div class="campo">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" name="nombre" placeholder="Ingrese nombre" required autocomplete="off">
+                                    </div>
+                                    
+                                    <div class="campo">
+                                        <label for="preciouni">Precio por unidad</label>
+                                        <input type="text" name="preciouni" placeholder="Ingrese su precio" required autocomplete="off">
+                                    </div>
+                    
+                                    <div class="campo">
+                                        <label for="alternos">Productos alternos</label>
+                                        <input type="text" name="alternos" placeholder="Ingrese productos" required autocomplete="off">
+                                    </div>
+    
+                                    <div class="campo">
+                                        <label for="precioventa">Precio de venta</label>
+                                        <input type="text" name="precioventa" placeholder="Ingrese precio de venta" required autocomplete="off">
+                                    </div>
+    
+                                    <div class="campo">
+                                        <label for="cantidad">Cantidad</label>
+                                        <input type="number" name="cantidad" placeholder="Ingrese cantidad de productos" required autocomplete="off">
+                                    </div>
+    
+                                    <div class="campo">
+                                        <label for="cantidadmin">Cantidad minima en stock</label>
+                                        <input type="number" name="cantidadmin" placeholder="Ingrese cantidad de productos" required autocomplete="off">
+                                    </div>
+    
+                                    <div id = "campo2">
+                                        <div id = "campo2">
+                                            <input type="checkbox" id = "box">
+                                            <div id = "Letra1">IVA</div>
+                                        </div>
+                                        
+                                                         
+                                        <div id = "Imagen">Imagen:
+                                            <button type="button" class="btn btn-secondary btn-sm" id = "btn-sm">Upload image</button>
+                                        </div>                                       
+                                    </div>
+                        
+                                    <div>
+                                        <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar producto</button>   
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="modal-Actproductos" class="modal">
+                        <div class="modal-contenido">
+                            <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
+                            <h2>Actualizar Productos</h2>
+                            
+                            <form action="/registroproducto" method="post">
+                                
+                                <div class="campo">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" name="nombre" placeholder="Ingrese nombre" required autocomplete="off">
+                                </div>
+                                
+                                <div class="campo">
+                                    <label for="preciouni">Precio por unidad</label>
+                                    <input type="text" name="preciouni" placeholder="Ingrese su precio" required autocomplete="off">
+                                </div>
+                
+                                <div class="campo">
+                                    <label for="alternos">Productos alternos</label>
+                                    <input type="text" name="alternos" placeholder="Ingrese productos" required autocomplete="off">
+                                </div>
+
+                                <div class="campo">
+                                    <label for="precioventa">Precio de venta</label>
+                                    <input type="text" name="precioventa" placeholder="Ingrese precio de venta" required autocomplete="off">
+                                </div>
+
+                                <div class="campo">
+                                    <label for="cantidad">Cantidad</label>
+                                    <input type="number" name="cantidad" placeholder="Ingrese cantidad de productos" required autocomplete="off">
+                                </div>
+
+                                <div class="campo">
+                                    <label for="cantidadmin">Cantidad minima en stock</label>
+                                    <input type="number" name="cantidadmin" placeholder="Ingrese cantidad de productos" required autocomplete="off">
+                                </div>
+
+                                <div id = "campo2">
+                                    <div id = "campo2">
+                                        <input type="checkbox" id = "box">
+                                        <div id = "Letra1">IVA</div>
+                                    </div>
+                                    
+                                                     
+                                    <div id = "Imagen">Imagen:
+                                        <button type="button" class="btn btn-secondary btn-sm" id = "btn-sm">Upload image</button>
+                                    </div>                                       
+                                </div>
+                    
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar producto</button>   
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                
+                        
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID Productos</th>
+                                <th>Nombre</th>
+                                <th>Precio Unitario</th>
+                                <th>Productos alternos</th>
+                                <th>Precio de venta</th>
+                                <th>Cantidad</th>
+                                <th>Cantidad minima</th>
+    
+    
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for producto in productos %}
+                                <tr>
+                                    <td>{{ producto.id }}</td>
+                                    <td>{{ producto.nombre }}</td>
+                                    <td>{{ producto.email}}</td>
+                                    <td>{{ producto.fecha_inicio }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
     
             <div class="pagina Cotizacion">
