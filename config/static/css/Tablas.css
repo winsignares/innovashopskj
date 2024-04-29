@@ -79,3 +79,20 @@ button:hover {
   display: flex;
   justify-content: space-between;
 }
+
+.sugerencias {
+  position: absolute;
+  background: white;
+  border: 1px solid gray;
+  z-index: 100; 
+}
+
+.sugerencia {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.sugerencia:hover {
+  background: lightgray;
+}
+
