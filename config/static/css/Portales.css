@@ -76,6 +76,7 @@ body {
     margin: 50px 0;
     background-color: var(--azul-opacidad);
     padding: 1rem;
+    padding: 20px 10px 20px 28px;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -100,6 +101,7 @@ body {
 .menu .enlace {
     width: 100%;
     padding: 20px 0 20px 17px;
+    padding: 20px 10px 20px 28px;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -250,4 +252,35 @@ body {
 
 .lables {
     text-align: left;
+}
+
+/*
+.butona {
+  background-color: #0062ff;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 6px;
+  margin-top: 30px;
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.9);
+  margin-bottom: 50px;
+
+}
+
+.butona:active {
+    transform: translateY(2px); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+ 
+
+.cont{
+    display: flex;
+}*/
+
+.tablaCotizacion {
+    font-size: 20px;
 }
