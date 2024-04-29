@@ -1,5 +1,6 @@
 document.querySelectorAll(".abrir-modal").forEach(function (boton) {
     boton.addEventListener("click", function () {
+        event.stopPropagation();
         var modalId = this.getAttribute("data-modal-id");
         var modal = document.getElementById(modalId);
         modal.style.display = "flex";
