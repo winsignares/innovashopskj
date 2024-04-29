@@ -472,14 +472,117 @@
                     
                      
                     </div> 
-                    <div id = "buton">
-                        <button type="button" class="btn btn-primary btn-lg" id = "Guardar">Realizar Cotizacion</button>
-                    </div>                                      
+                    <div class="completar">
+                        <div class="total"> Total: 
+                            <label for="total"> 50.000$</label>
+                        </div>
+                        <button id = "HacerCompra" type="submit" class="btn btn-primary btn-lg">Hacer Cotizacion</button>
+                    </div>                                        
                 </div>
             </div>
     
-            <div class="pagina Venta">
-                <div class="dentro">Venta</div>
+            <div class="pagina Venta">                
+                    <div class="dentro">
+                        <div id="RegistroProveedor">
+                            <div id = "titulo">
+                                <div class="formulario">
+                                    <form id="formulario-busqueda" onsubmit="return false;">
+                                        <label id = "id" style="margin-right: -11px"> <div id = "id2">ID:</div></label>
+                                        <input type="text" id="textbox" name="termino" placeholder="Ingrese nombre o ID" required >
+                                    </form>
+                                </div>
+                                <button class="abrir-modal" data-modal-id="modal-carrito" id = "Carrito">
+                                    <i class='bx bx-cart' id = "iconoCar"></i>
+                                    <label for="bx bx bx-cart">0</label>
+                                </button>
+                            </div>
+                        </div>    
+    
+                            <div id="modal-carrito" class="modal">
+                                <div class="modal-contenido">
+                                    <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
+                                    <h2>Confirmar Compra</h2>
+    
+                                    <div class="contenedorProductos">
+                                        <div id = "producto">
+                                            <div id = "img">
+                                                <img src="../static/img/mesa.jpeg" alt="">
+            
+                                            </div>
+                                            <div id = "datos">
+                                                <div> Mesa</div>
+                                                <div id = "checkbox"> 100.000
+                                                </div>
+                                                <div>Cantidad:
+                                                    <input type="text" id = "cantidad">
+                                                </div>
+            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="completar">
+                                        <div class="total"> Total: 
+                                            <label for="total"> 100.000$</label>
+                                        </div>
+                                        <button id = "HacerCompra" type="submit" class="btn btn-primary btn-lg">Completar compra</button>
+                                    </div>                               
+                                </div>
+                            </div>
+                            
+                            
+                        <div class = "contenedorProductos">
+                            <div class="BarraDeProductos">
+                                <div class = "productoInfo">
+                                    <img src="../static/img/mesa.jpeg" class = "imgProducto">
+                                    <div class = "info">
+                                        <label for="info"> Mesa de roble</label>
+                                        <label for="info">100.000 </label>
+                                        <button type="button" class="btn btn-primary btn-lg" id = "AgregarCarrito">Agregar al carrito</button>
+    
+                                    </div>
+                                </div>
+                                <div class = "productoInfo">
+                                    <img src="../static/img/img-1-silla-coco-min.jpg" class = "imgProducto">
+                                    <div class = "info">
+                                        <label for="info"> Trono de roble</label>
+                                        <label for="info">150.000$ </label>
+                                        <button type="button" class="btn btn-primary btn-lg" id = "AgregarCarrito">Agregar al carrito</button>
+    
+                                    </div>
+                                </div>
+                                <div class = "productoInfo">
+                                    <img src="../static/img/images.jpeg" class = "imgProducto">
+                                    <div class = "info">
+                                        <label for="info"> Tocador </label>
+                                        <label for="info">200.000$ </label>
+                                        <button type="button" class="btn btn-primary btn-lg" id = "AgregarCarrito">Agregar al carrito</button>
+    
+                                    </div>
+                                </div>
+                                <div class = "productoInfo">
+                                    <img src="../static/img/unnamed.jpg" class = "imgProducto">
+                                    <div class = "info">
+                                        <label for="info"> El comodisimo </label>
+                                        <label for="info">500.000$ </label>
+                                        <button type="button" class="btn btn-primary btn-lg" id = "AgregarCarrito">Agregar al carrito</button>
+    
+                                    </div>
+                                </div>
+                                <div class = "productoInfo">
+                                    <img src="../static/img/televisor.jpg" class = "imgProducto">
+                                    <div class = "info">
+                                        <label for="info"> El Full achede </label>
+                                        <label for="info">1.000.000$ </label>
+                                        <button type="button" class="btn btn-primary btn-lg" id = "AgregarCarrito">Agregar al carrito</button>
+    
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                        <div class="pestañasProductos">
+                            <u class="pestaña">1 </u> <u class="pestaña">2 </u> <u class="pestaña">3</u>...<u class="pestaña">4</u>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
