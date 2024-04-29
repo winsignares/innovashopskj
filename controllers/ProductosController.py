@@ -7,7 +7,7 @@ ruta_productos = Blueprint("route_productos", __name__)
 producto_schema= ProductoSchema()
 productos_schema= ProductoSchema(many=True)
 
-@app.route('/registroproducto', methods=['POST'])
+@app.route('/registr**oproducto', methods=['POST'])
 def registrar_productos():
 
     nombre = request.form.get('nombre')
