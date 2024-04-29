@@ -13,7 +13,7 @@ class Productos (db.Model):
     iva = db.Column(db.Float())
     img = db.Column(db.String(255), nullable=True)
     
-    def __init__(self, id, nombre, preciouni, alternos, precioventa, cantidad, cantidadmin, iva=False, img=None):
+    def __init__(self, id, nombre, preciouni, alternos, precioventa, cantidad, cantidadmin, iva, img=None):
         self.id = id
         self.nombre = nombre  
         self.preciouni = preciouni  
