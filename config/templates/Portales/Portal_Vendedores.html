@@ -135,6 +135,24 @@
                             </div>
                         </div>
                     </div>
+
+                    <div id="modal-graficaCliente" class = "modal">
+                        <div class="modal-contenido">
+                            <div class="found">
+                                <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
+                                <img src="../static/img/grafica.png" alt="">
+                        
+                                <div class="btn">
+                                    <button
+                                      class="butona"
+                                      type="button"
+                                    >
+                                      Imprimir PDF
+                                    </button>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
                         
                     <table>
                         <thead>
@@ -148,7 +166,7 @@
                         </thead>
                         <tbody>
                             {% for cliente in clientes %}
-                                <tr>
+                                <tr class="abrir-modal" data-modal-id="modal-graficaCliente" style="cursor: pointer;">
                                     <td>{{ cliente.id }}</td>
                                     <td>{{ cliente.nombre }}</td>
                                     <td>{{ cliente.email}}</td>
@@ -171,17 +189,19 @@
                                     <input type="text" id="textbox" name="termino" placeholder="Ingrese nombre o ID" required >
                                 </form>
                             </div>
+                            <div class="Descuentoproducto">
+                                <button class="abrir-modal" data-modal-id="modal-DescProducto">Aplicar Descuento</button>
+                            </div>
                             <div class="actualizarproducto">
                                 <button class="abrir-modal" data-modal-id="modal-Actproductos">Actualizar un producto</button>
                             </div>
                             <div class="registroproducto">
                                 <button class="abrir-modal" data-modal-id="modal-productos">Agregar un producto</button>
-                            </div>
-                            <div class="Descuentoproducto">
-                                <button class="abrir-modal" data-modal-id="modal-DescProducto">Aplicar Descuento</button>
-                            </div>
+                            </div>                           
                         </div>
                     </div>
+
+                    
 
                     <div id="modal-productos" class="modal">
                         <div class="modal-contenido">
@@ -366,7 +386,86 @@
                                 </div>
                             </form>
                         </div>
-                    </div>              
+                    </div>
+                    <div id="modal-DescripcionProducto" class="modal">
+                        <div class="modal-contenido">
+                            <div class="found">
+                                <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
+
+                                <div class="cont1">
+                                    <div class="producto">
+                        
+                                        <img src="producto.png" alt="">
+                        
+                                        <div class="div_id">
+                        
+                                            <label for="ID">ID</label>
+                                            <input class="txt_box" type="text">
+                        
+                                        </div>
+                        
+                                        <div class="div_id">
+                        
+                                            <label for="name">Nombre</label>
+                                            <input class="txt_box" type="text">
+                        
+                                        </div>
+                        
+                                        <div class="div_id">
+                        
+                                            <label for="PU">Precio por unidad</label>
+                                            <input class="txt_box" type="text">
+                        
+                                        </div>
+                        
+                                        <div class="div_id">
+                        
+                                            <label for="PV">Precio de venta</label>
+                                            <input class="txt_box" type="text">
+                        
+                                        </div>
+                        
+                                        <div class="div_id">
+                        
+                                            <label for="cant">Cantidad</label>
+                                            <input class="txt_box" type="text">
+                        
+                                        </div>
+                        
+                                        <div class="div_id">
+                        
+                                            <label for="CMS">Cantidad minima</label>
+                                            <input class="txt_box" type="text">
+                        
+                                        </div>
+                            
+                        
+                                        <div class="btn">
+                                            <button
+                                              class="butona"
+                                              type="button"
+                                            >
+                                              Imprimir
+                                            </button>
+                                          </div>
+                        
+                                    </div>
+                                    <div class="grafica_2">
+                        
+                                        <img src="../static/img/grafica_2.png" alt="">
+                        
+                                        <div class="barras">
+                        
+                                            <img src="../static/img/codigo.png" alt="">
+                        
+                                        </div>                        
+                                    </div>                                                           
+                                </div>                       
+                            </div>                           
+                        </div>
+                    </div>  
+                    
+
                         
                     <table>
                         <thead>
@@ -384,8 +483,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for producto in productos %}
-                                <tr>
+                            {% for producto in productos %}  
+                                <tr class="abrir-modal" data-modal-id="modal-DescripcionProducto" style="cursor: pointer;">
                                     <td><img src="{{ url_for('static', filename='img/Img-productos/' + producto.img) }}" alt="Imagen del producto" width="50" height="50"></td>
                                     <td>{{ producto.id }}</td>
                                     <td>{{ producto.nombre }}</td>

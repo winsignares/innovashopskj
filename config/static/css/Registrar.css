@@ -329,4 +329,103 @@ margin-top: 17px;
     margin-top: 22px;
 }
 
+ /* Css de ventana de qr*/
+
+ body {
+    font-family: 'Mulish', sans-serif;
+  }
+  
+  .found {
+    max-width: 57rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 3rem;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column
+  }
+  
+  .butona {
+    background-color: #0062ff;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+    color: #ffffff;
+    font-weight: 700;
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.9);
+    width: 100%;
+
+  }
+  
+  .butona:active {
+      transform: translateY(2px); 
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  
+  .cont1{
+  
+      display: flex;
+  
+  }
+  
+  .grafica_2{
+  
+  margin-left: 3rem;
+  
+  }
+  
+  .barras{
+  
+      margin-top:60px;
+      margin-left: 100px;
+  
+  }
+  
+  .txt_box{
+    display: flex;
+    width: 70%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.55rem;
+    outline: none;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    /* margin-left: 50px; */
+    width: 100px;
+  
+  }
+  
+  
+  
+  .producto{
+  width: 400px;
+  margin: 1rem;
+  
+  }
+
+  .div_id {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
 
