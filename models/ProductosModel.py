@@ -11,8 +11,10 @@ class Productos (db.Model):
     cantidad = db.Column(db.String(70))
     cantidadmin = db.Column(db.String(70))
     iva = db.Column(db.Boolean, default=False)
+    img = db.Column(db.String(255), nullable=True)
     
-    def __init__(self, nombre, preciouni, alternos, precioventa, cantidad, cantidadmin, iva=False):
+    def __init__(self, id, nombre, preciouni, alternos, precioventa, cantidad, cantidadmin, iva=False, img=None):
+        self.id = id
         self.nombre = nombre  
         self.preciouni = preciouni  
         self.alternos = alternos  
@@ -20,10 +22,11 @@ class Productos (db.Model):
         self.cantidad = cantidad 
         self.cantidadmin = cantidadmin  
         self.iva = iva
+        self.img = img
     
 with app.app_context():
     db.create_all()
 
 class ProductoSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'nombre', 'preciouni', 'alternos', 'precioventa', 'cantidad', 'cantidadmin', 'iva')
+        fields = ('id', 'nombre', 'preciouni', 'alternos', 'precioventa', 'cantidad', 'cantidadmin', 'iva', 'img')

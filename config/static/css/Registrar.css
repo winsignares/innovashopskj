@@ -92,114 +92,87 @@
 
 
 #textbox {
-    overflow-wrap: break-word;
-    font-weight: 400;
-    font-size: 20px;
-    padding: 13.5px 25.9px 10.1px 25.9px;
-    width: 380px;
-    height: 37px;
-    color: rgb(0, 0, 0);
-    background: #D9D9D9;
-    border-color: white;
-    border: none;
-    border-left: 2px solid black;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
+overflow-wrap: break-word;
+font-weight: 400;
+font-size: 20px;
+padding: 13.5px 25.9px 10.1px 25.9px;
+width: 380px;
+height: 37px;
+color: rgb(0, 0, 0);
+background: #D9D9D9;
+border-color: white;
+border: none;
+border-left: 2px solid black;
+border-top-right-radius: 30px;
+border-bottom-right-radius: 30px;
 }
 
 #id {
-    font-weight: 100;
-    font-size: 25px;
-    color: black;
-    width: 43px;
-    height: 37px;
-    background: #D9D9D9;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+font-weight: 100;
+font-size: 25px;
+color: black;
+width: 43px;
+height: 37px;
+background: #D9D9D9;
+border-top-left-radius: 30px;
+border-bottom-left-radius: 30px;
 }
 
 #id2 {
-    margin-left: 7px;
+margin-left: 7px;
 }
- 
+
 #modulos {
-    display: flex;
-    flex-direction: row;
-    font-weight: 100;
-    font-size: 30px;
-    justify-content: space-between;
+display: flex;
+flex-direction: row;
+font-weight: 100;
+font-size: 30px;
+justify-content: space-between;
 }
 
 #box {
-    width: 25px;
-    height: 25px;
-    text-align: center;
-    margin-top: 11px;
-    margin-right: 10px;
+width: 25px;
+height: 25px;
+text-align: center;
+margin-top: 11px;
+margin-right: 10px;
 }
 
 #Volver {
-    position: relative;
-    width: 150px;
-    height: 50px;
-    overflow-wrap: break-word;
-    font-family: 'Mulish';
-    font-weight: 400;
-    font-size: 20px;
-    margin: 10px 0px 0px 10px;
-}
-
-.formulario {
-
+position: relative;
+width: 150px;
+height: 50px;
+overflow-wrap: break-word;
+font-family: 'Mulish';
+font-weight: 400;
+font-size: 20px;
+margin: 10px 0px 0px 10px;
 }
 
 #titulo {
-    font-weight: 400;
-    font-size: 20px;
-    color: black;
-    display: flex;
-    flex-direction: row;
+font-weight: 400;
+font-size: 20px;
+color: black;
 }
 
 #box {
-    margin-left: 60px;
-    width: 20px;
-    margin-top: 17px;
+margin-left: 60px;
+width: 20px;
+margin-top: 17px;
 }
 
-#container {
-    display: flex;
-    flex-direction: row;
-}
-
-#Imagen {
-    display: flex;
-    flex-direction: row;
-    margin-left: 150px;
+.Imagen {
     font-weight: 400;
     font-size: 25px;
+    width: 100%;
     color: black;
-    margin-top: 10px;
-    margin-right: 100px;
+    margin: 3rem;
 }
 
-#campo2 {
+.flex-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-#Letra1 {
-    font-weight: 400;
-    font-size: 25px;
-    margin-top: 10px;
-
-}
-
-#RegistroProveedor {
-    background: #FFFFFF;
-    display: flex;
-    flex-direction: column;
+    justify-content: space-between;  
+    align-items: center; 
 }
 
 #titulo {
