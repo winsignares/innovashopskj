@@ -24,7 +24,7 @@ def registrar_productos():
     precioventa = to_float(request.form.get('precioventa'), 0.0)
     cantidad = to_float(request.form.get('cantidad'), 0)
     cantidadmin = to_float(request.form.get('cantidadmin'), 0)
-    iva = request.form.get('iva')
+    iva = to_float(request.form.get('iva'), 0.0)
     img = request.files.get('img')
     
     if not nombre:
@@ -48,7 +48,7 @@ def registrar_productos():
             precioventa=float(precioventa),
             cantidad=cantidad,
             cantidadmin=cantidadmin,
-            iva=iva,
+            iva=float(iva),
             img=filename
         )
     db.session.add(nuevo_producto)   
@@ -104,7 +104,7 @@ def actualizar():
     precioventa = request.form.get('precioventa')
     cantidad = request.form.get('cantidad')
     cantidadmin = request.form.get('cantidadmin')
-    iva = request.form.get('iva', 'False').lower() in ['true', '1', 't', 'yes'] 
+    iva = request.form.get('iva')
     img = request.files.get('img') 
 
     producto_existente = Productos.query.filter_by(id=id_productos).first()
@@ -124,7 +124,7 @@ def actualizar():
         producto_existente.precioventa = float(precioventa)
         producto_existente.cantidad = cantidad
         producto_existente.cantidadmin = cantidadmin
-        producto_existente.iva = iva
+        producto_existente.iva = float(iva)
         
         db.session.commit()
         
