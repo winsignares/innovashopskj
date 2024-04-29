@@ -70,22 +70,27 @@ def safe_float(value, default=0.0):
 
 @app.route('/parametrizar', methods=['POST'])
 def parametrizar_producto():
-    id_producto = request.form.get("id_producto")
+    id_producto = request.form.get("id")
     preciouni = safe_float(request.form.get("preciouni", 0))
     precio_ganancia = safe_float(request.form.get("precio_ganancia", 0))
     iva = safe_float(request.form.get("iva", 0))
-    precio_venta = safe_float(request.form.get("precio_venta", 0))
-
+    
     if not id_producto:
         return jsonify({"error": "ID del producto es obligatorio"}), 400
     
     producto = Productos.query.filter_by(id=id_producto).first()
 
     if producto:
+        # Cálculo del precio de venta basado en el porcentaje de ganancia y el IVA
+        ganancia = preciouni * (precio_ganancia / 100)
+        precio_venta = preciouni + ganancia
+        precio_venta += precio_venta * (iva / 100)  # Agrega el IVA al precio de venta
+        
+        # Actualizar el producto
         producto.preciouni = preciouni
-        producto.precio_venta = precio_venta
         producto.precio_ganancia = precio_ganancia
         producto.iva = iva
+        producto.precioventa = precio_venta
         
         db.session.commit()
 

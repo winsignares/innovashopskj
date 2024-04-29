@@ -1,22 +1,16 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const preciouniInput = document.querySelector("input[name='preciouni']");
-    const precioGananciaInput = document.querySelector("input[name='precio_ganancia']");
-    const ivaInput = document.querySelector("input[name='iva']");
-    const precioVentaInput = document.querySelector("input[name='precio_venta']");
+document.addEventListener("DOMContentLoaded", function () {
 
-    function calcularPrecioVenta() {
-        const preciouni = parseFloat(preciouniInput.value) || 0;
-        const ganancia = parseFloat(precioGananciaInput.value) || 0;
-        const iva = parseFloat(ivaInput.value) || 0;
-        
-        const gananciaTotal = preciouni * (ganancia / 100);
-        const ivaTotal = (preciouni + gananciaTotal) * (iva / 100);
-        const precioVenta = preciouni + gananciaTotal + ivaTotal;
+    const botonesParametrizacion = document.querySelectorAll(".abrir-modal[data-modal-id='modal-parametrizacion']");
 
-        precioVentaInput.value = precioVenta.toFixed(2);
-    }
+    botonesParametrizacion.forEach(boton => {
+        boton.addEventListener("click", function () {
 
-    preciouniInput.addEventListener("input", calcularPrecioVenta);
-    precioGananciaInput.addEventListener("input", calcularPrecioVenta);
-    ivaInput.addEventListener("input", calcularPrecioVenta);
+            const fila = this.closest("tr");
+            const productoId = fila.querySelector("td:nth-child(2)").textContent;
+            
+
+            const inputId = document.querySelector("#modal-parametrizacion input[name='id']");
+            inputId.value = productoId;
+        });
+    });
 });
