@@ -8,18 +8,28 @@ ruta_productos = Blueprint("route_productos", __name__)
 producto_schema= ProductoSchema()
 productos_schema= ProductoSchema(many=True)
 
+def to_float(value, default=0.0):
+    try:
+        return float(value) if value else default
+    except ValueError:
+        return default
+
 @app.route('/registroproducto', methods=['POST'])
 def registrar_productos():
 
     id_productos = request.form['id']
-    nombre = request.form['nombre']
-    preciouni = request.form['preciouni']
-    alternos = request.form['alternos']
-    precioventa = request.form['precioventa']
-    cantidad = request.form['cantidad']
-    cantidadmin = request.form['cantidadmin']
-    iva = request.form.get('iva', 'False').lower() in ['true', '1', 't', 'yes']
-    img = request.files['img']
+    nombre = request.form.get('nombre', '')
+    preciouni = to_float(request.form.get('preciouni'), 0.0)
+    alternos = request.form.get('alternos', '')
+    precioventa = to_float(request.form.get('precioventa'), 0.0)
+    cantidad = to_float(request.form.get('cantidad'), 0)
+    cantidadmin = to_float(request.form.get('cantidadmin'), 0)
+    iva = request.form.get('iva')
+    img = request.files.get('img')
+    
+    if not nombre:
+        return jsonify({"error": "El nombre es obligatorio"}), 400
+    
     if img:
         filename = f"{nombre}.jpg"
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -45,6 +55,44 @@ def registrar_productos():
     db.session.commit()
 
     return redirect('/Portal_Vendedor')
+
+@app.route('/buscar_productos', methods=['GET'])
+def buscar_productos():
+    termino = request.args.get('termino', '')
+    productos = Productos.query.filter(Productos.nombre.ilike(f"%{termino}%")).limit(10).all()
+    return jsonify([producto.nombre for producto in productos])
+
+def safe_float(value, default=0.0):
+    try:
+        return float(value)
+    except (ValueError, TypeError):
+        return default
+
+@app.route('/parametrizar', methods=['POST'])
+def parametrizar_producto():
+    id_producto = request.form.get("id_producto")
+    preciouni = safe_float(request.form.get("preciouni", 0))
+    precio_ganancia = safe_float(request.form.get("precio_ganancia", 0))
+    iva = safe_float(request.form.get("iva", 0))
+    precio_venta = safe_float(request.form.get("precio_venta", 0))
+
+    if not id_producto:
+        return jsonify({"error": "ID del producto es obligatorio"}), 400
+    
+    producto = Productos.query.filter_by(id=id_producto).first()
+
+    if producto:
+        producto.preciouni = preciouni
+        producto.precio_venta = precio_venta
+        producto.precio_ganancia = precio_ganancia
+        producto.iva = iva
+        
+        db.session.commit()
+
+        return redirect("/Portal_Vendedor")
+    else:
+        return jsonify({"error": "Producto no encontrado"}), 404
+
 
 @app.route('/actualizarproducto', methods=['POST'])
 def actualizar():
