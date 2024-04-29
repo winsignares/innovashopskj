@@ -82,13 +82,14 @@
     color: black;
 }
 
-#container {
+#containerTabla {
         margin-top: 5px;
         background: #D9D9D9;
         height: 750px;
         width: 100%;
         border-radius: 10px;
 }
+
 
 #textbox {
     overflow-wrap: break-word;
@@ -192,3 +193,110 @@
     margin-top: 10px;
 
 }
+
+#RegistroProveedor {
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+#titulo {
+  font-weight: 400;
+  font-size: 40px;
+  color: black;
+}
+
+#divprincipal, #divsecundario {
+    width: 750px;
+    height: 800px;
+    margin-left: 30px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+#fila {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    width: 100%;
+}
+
+#producto {
+    margin-top: 10px;
+    border-radius: 20px;
+    background: white;
+    display: flex;
+    width: 100%;
+}
+
+#img {
+    display: flex;
+    width: 200px;
+    height: 150px;
+    margin: 20px;
+    background: black;
+
+}
+
+#datos {
+    font-weight: 400;
+    font-size: 25px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    width: 100%;
+}
+
+#divprincipal {
+    font-weight: 400;
+    font-size: 50px;
+    color: black;
+    width: 100%;
+}
+
+#divsecundario {
+    background: #0C0A26;
+    overflow: auto;
+    width: 100%;
+}
+
+#espacio {
+    margin-left: 30px;
+}
+
+#checkbox {
+    display: flex;
+    flex-direction: row;
+    /* text-align: right; */
+    justify-content: space-between;
+    margin-right: 30px;
+}
+
+#cantidad {
+    text-align: center;
+    border-radius: 20px;
+    width: 100px;
+    height: 30px;
+}
+
+#check {
+    margin-left: 150px;
+    width: 30px;
+    height: 35px;
+
+}
+
+#Portal {
+    font-weight: 100;
+    font-size: 30px;
+    color: black;
+}
+
+#buton {
+    width: 100%;
+    padding: 0;
+    text-align: right;
+    /* background: black; */
+}
+

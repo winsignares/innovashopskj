@@ -331,7 +331,58 @@
             </div>
     
             <div class="pagina Cotizacion">
-                <div class="dentro">Cotizacion</div>
+                <div class="dentro">
+                    <div id="RegistroProveedor">
+                        <div id = "titulo">
+                            Proveedor
+                        </div>
+                                                               
+                    </div>
+                    <div id = "fila">
+                        <div id = "divprincipal">
+                            <table class = tablaCotizacion>
+                                <thead>
+                                    <tr>
+                                        <th>ID Proveedores</th>
+                                        <th>Nombre</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for proveedor in proveedores %}
+                                        <tr>
+                                            <td>{{ proveedor.id }}</td>
+                                            <td>{{ proveedor.nombre }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table> 
+
+                        </div>
+                        <div id = "divsecundario">
+                            <div id = "producto">
+                                <div id = "img">
+                                    <img src="mesa.jpeg" alt="">
+
+                                </div>
+                                <div id = "datos">
+                                    <div> Mesa</div>
+                                    <div id = "checkbox"> 50.000
+                                        <input type="checkbox" id = "check">
+                                    </div>
+                                    <div>Cantidad:
+                                        <input type="text" id = "cantidad">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    
+                     
+                    </div> 
+                    <div id = "buton">
+                        <button type="button" class="btn btn-primary btn-lg" id = "Guardar">Realizar Cotizacion</button>
+                    </div>                                      
+                </div>
             </div>
     
             <div class="pagina Descuento">
