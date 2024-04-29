@@ -337,15 +337,14 @@ margin-top: 17px;
   
   .found {
     max-width: 57rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding: 3rem;
+    padding: 2rem;
     background-color: #fff;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     border-radius: 0.5rem;
     display: flex;
-    flex-direction: column
-  }
+    flex-direction: column;
+    overflow-y: auto; 
+}
   
   .butona {
     background-color: #0062ff;
@@ -370,8 +369,10 @@ margin-top: 17px;
   .cont1{
   
       display: flex;
+      padding: 2rem;
   
   }
+  
   
   .grafica_2{
   
@@ -429,6 +430,18 @@ margin-top: 17px;
     width: 100%;
     margin-bottom: 20px;
 }
+
+
+@media print {
+    label {
+        color: #000; /* Fuerza el color negro para los labels */
+    }
+    input.txt_box {
+        color: #000; /* Asegura que el color de los campos de entrada sea negro */
+    }
+}
+
+
 
 
 

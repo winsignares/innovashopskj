@@ -12,9 +12,12 @@
     <link rel="stylesheet" href="../static/css/Portales.css">
     <link rel="stylesheet" href="../static/css/Registrar.css">
     <link rel="stylesheet" href="../static/css/Tablas.css">
+    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode/dist/JsBarcode.all.min.js"></script>
     <script src="../static/js/app.js" defer></script>
     <script src="../static/js/ventanasemergentes.js" defer></script>
     <script src="../static/js/parametrizacion.js" defer></script>
+    <script src="../static/js/descripcion.js" defer></script>
 </head>
 <body>
     <div class="menu-dashboard open">
@@ -181,14 +184,17 @@
     
             <div class="pagina Gestionar-productos"> 
                 <div class="dentro">                    
-                    <div class="contenedor">                      
+                    <div class="contenedor">     
+                        
+                        <div class="formulario">
+                            <form id="formulario-busqueda" onsubmit="return false;">
+                                <label id = "id" style="margin-right: -4px"> <div id = "id2">ID:</div></label>
+                                <input type="text" id="textbox" name="termino" placeholder="Ingrese nombre o ID" required >
+                            </form>
+                        </div>
+                        
                         <div class="containerform">
-                            <div class="formulario">
-                                <form id="formulario-busqueda" onsubmit="return false;">
-                                    <label id = "id" style="margin-right: -4px"> <div id = "id2">ID:</div></label>
-                                    <input type="text" id="textbox" name="termino" placeholder="Ingrese nombre o ID" required >
-                                </form>
-                            </div>
+                            
                             <div class="Descuentoproducto">
                                 <button class="abrir-modal" data-modal-id="modal-DescProducto">Aplicar Descuento</button>
                             </div>
@@ -382,68 +388,59 @@
                             </form>
                         </div>
                     </div>
+
                     <div id="modal-DescripcionProducto" class="modal">
                         <div class="modal-contenido">
                             <div class="found">
-                                <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
+                                <span class="cerrar-modal">&times;</span>
 
-                                <div class="cont1">
+                                <div class="cont1" id="descripcion-producto" >
                                     <div class="producto">
                         
                                         <img src="../static/img/mesa.jpeg" alt="" id = "imgdesc">
-                        
+
                                         <div class="div_id">
-                        
-                                            <label for="ID">ID</label>
+
+                                            <label for="ID">ID: </label>
                                             <input class="txt_box" type="text">
-                        
+
                                         </div>
                         
                                         <div class="div_id">
-                        
-                                            <label for="name">Nombre</label>
+
+                                            <label for="name">Nombre: </label>
                                             <input class="txt_box" type="text">
-                        
+
                                         </div>
                         
                                         <div class="div_id">
-                        
-                                            <label for="PU">Precio por unidad</label>
+
+                                            <label for="PU">Precio por unidad: </label>
                                             <input class="txt_box" type="text">
-                        
+
                                         </div>
                         
                                         <div class="div_id">
-                        
-                                            <label for="PV">Precio de venta</label>
+
+                                            <label for="PV">Precio de venta: </label>
                                             <input class="txt_box" type="text">
-                        
+
                                         </div>
                         
                                         <div class="div_id">
-                        
-                                            <label for="cant">Cantidad</label>
+
+                                            <label for="cant">Cantidad: </label>
                                             <input class="txt_box" type="text">
-                        
+
                                         </div>
                         
-                                        <div class="div_id">
-                        
-                                            <label for="CMS">Cantidad minima</label>
+                                        <div class="div_id">                  
+
+                                            <label for="CMS">Cantidad minima: </label>
                                             <input class="txt_box" type="text">
-                        
+
                                         </div>
-                            
-                        
-                                        <div class="btn">
-                                            <button
-                                              class="butona"
-                                              type="button"
-                                            >
-                                              Imprimir
-                                            </button>
-                                          </div>
-                        
+                                        
                                     </div>
                                     <div class="grafica_2">
                         
@@ -451,12 +448,16 @@
                         
                                         <div class="barras">
                         
-                                            <img src="../static/img/codigo.png" alt="">
+                                            <svg id="barcode"></svg>
                         
                                         </div>                        
                                     </div>                                                           
-                                </div>                       
-                            </div>                           
+                                </div> 
+                                
+                            </div>       
+                            <div class="btn">
+                                <button class="butona" id="imprimir-pdf" type="button">Imprimir</button>
+                            </div>                    
                         </div>
                     </div>  
                     
@@ -671,9 +672,11 @@
                                 </div>    
                             </div>
                         </div>
+
                         <div class="pestañasProductos">
                             <u class="pestaña">1 </u> <u class="pestaña">2 </u> <u class="pestaña">3</u>...<u class="pestaña">4</u>
                         </div>
+
                     </div>
             </div>
         </div>

@@ -81,12 +81,11 @@ def parametrizar_producto():
     producto = Productos.query.filter_by(id=id_producto).first()
 
     if producto:
-        # Cálculo del precio de venta basado en el porcentaje de ganancia y el IVA
+
         ganancia = preciouni * (precio_ganancia / 100)
         precio_venta = preciouni + ganancia
-        precio_venta += precio_venta * (iva / 100)  # Agrega el IVA al precio de venta
+        precio_venta += precio_venta * (iva / 100)  
         
-        # Actualizar el producto
         producto.preciouni = preciouni
         producto.precio_ganancia = precio_ganancia
         producto.iva = iva
@@ -104,12 +103,9 @@ def actualizar():
 
     id_productos = request.form.get('id')
     nombre = request.form.get('nombre')
-    preciouni = request.form.get('preciouni')
     alternos = request.form.get('alternos')
-    precioventa = request.form.get('precioventa')
     cantidad = request.form.get('cantidad')
     cantidadmin = request.form.get('cantidadmin')
-    iva = request.form.get('iva')
     img = request.files.get('img') 
 
     producto_existente = Productos.query.filter_by(id=id_productos).first()
@@ -124,12 +120,9 @@ def actualizar():
             producto_existente.img = filename
 
         producto_existente.nombre = nombre
-        producto_existente.preciouni = float(preciouni)
         producto_existente.alternos = alternos
-        producto_existente.precioventa = float(precioventa)
         producto_existente.cantidad = cantidad
         producto_existente.cantidadmin = cantidadmin
-        producto_existente.iva = float(iva)
         
         db.session.commit()
         

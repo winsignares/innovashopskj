@@ -24,11 +24,11 @@ document.getElementById('buscar_alternos').addEventListener('input', function() 
     const termino = this.value;
     const sugerenciasContainer = document.getElementById('sugerencias_alternos');
 
-    if (termino.length >= 2) {  // Solo busca si el término tiene al menos 2 caracteres
+    if (termino.length >= 2) {  
         fetch(`/buscar_productos?termino=${termino}`)
             .then(response => response.json())
             .then(data => {
-                // Limpia sugerencias previas
+
                 sugerenciasContainer.innerHTML = '';
 
                 data.forEach(producto => {
@@ -36,19 +36,18 @@ document.getElementById('buscar_alternos').addEventListener('input', function() 
                     suggestion.className = 'sugerencia';
                     suggestion.textContent = producto;
 
-                    // Al hacer clic, añade el producto a la lista de seleccionados
                     suggestion.addEventListener('click', function() {
                         const alternosField = document.getElementById('alternos_seleccionados');
-                        alternosField.value += (alternosField.value ? ',' : '') + producto;  // Añade producto a la lista
-                        document.getElementById('buscar_alternos').value = '';  // Limpia el campo de búsqueda
-                        sugerenciasContainer.innerHTML = '';  // Limpia las sugerencias
+                        alternosField.value += (alternosField.value ? ',' : '') + producto;  
+                        document.getElementById('buscar_alternos').value = '';  
+                        sugerenciasContainer.innerHTML = '';  
                     });
 
                     sugerenciasContainer.appendChild(suggestion);
                 });
             });
     } else {
-        sugerenciasContainer.innerHTML = '';  // Limpia si el término es muy corto
+        sugerenciasContainer.innerHTML = ''; 
     }
 });
 
