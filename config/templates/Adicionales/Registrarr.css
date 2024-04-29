@@ -157,8 +157,6 @@
     font-weight: 400;
     font-size: 20px;
     color: black;
-    display: flex;
-    flex-direction: row;
 }
 
 #box {
@@ -206,6 +204,9 @@
   font-weight: 400;
   font-size: 40px;
   color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #divprincipal, #divsecundario {
@@ -233,7 +234,6 @@
 
 #img {
     display: flex;
-    width: 200px;
     height: 150px;
     margin: 20px;
     background: black;
@@ -297,8 +297,32 @@
 
 #buton {
     width: 100%;
-    padding: 0;
+    padding: 0; 
     text-align: right;
     /* background: black; */
+}
+
+#HacerCompra {
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 450px;
+    height: 50px;
+}
+
+.completar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.total {
+    font-weight: 400;
+    font-size: 25px;
+    color: black;
+    margin-left: 50px;
+    margin-top: 22px;
 }
 
