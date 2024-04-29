@@ -47,11 +47,6 @@
                 <span>Cotizacion</span>
             </div>
 
-            <div class="enlace" data-pagina="Descuento">
-                <i class='bx bxs-user-pin'></i>
-                <span>Descuento</span>
-            </div>
-
             <div class="enlace" data-pagina="Venta">
                 <i class='bx bxs-user-pin'></i>
                 <span>Venta</span>
@@ -175,7 +170,7 @@
                                     <input type="text" id="textbox" name="termino" placeholder="Ingrese nombre o ID" required >
                                 </form>
                             </div>
-                            <div class="registroproducto">
+                            <div class="actualizarproducto">
                                 <button class="abrir-modal" data-modal-id="modal-Actproductos">Actualizar un producto</button>
                             </div>
                             <div class="registroproducto">
@@ -188,7 +183,7 @@
                                 <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
                                 <h2>Registro Productos</h2>
                                 
-                                <form action="/registroproducto" method="post">
+                                <form action="/registroproducto" method="post" enctype="multipart/form-data">
     
                                     <div class="campo">
                                         <label for="id">ID</label>
@@ -225,16 +220,16 @@
                                         <input type="number" name="cantidadmin" placeholder="Ingrese cantidad de productos" required autocomplete="off">
                                     </div>
     
-                                    <div id = "campo2">
-                                        <div id = "campo2">
-                                            <input type="checkbox" id = "box">
-                                            <div id = "Letra1">IVA</div>
+                                    <div class="flex-container">
+                                        <div class = "campo">
+                                            <input type="checkbox" name="iva" required>
+                                            <label for="iva">Iva</label>                           
                                         </div>
-                                        
-                                                         
-                                        <div id = "Imagen">Imagen:
-                                            <button type="button" class="btn btn-secondary btn-sm" id = "btn-sm">Upload image</button>
-                                        </div>                                       
+    
+                                        <div class="Imagen">
+                                            <label for="img">Subir imagen:</label>
+                                            <input type="file" name="img" required> 
+                                        </div>
                                     </div>
                         
                                     <div>
@@ -250,7 +245,12 @@
                             <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
                             <h2>Actualizar Productos</h2>
                             
-                            <form action="/registroproducto" method="post">
+                            <form action="/actualizarproducto" method="post" enctype="multipart/form-data">
+
+                                <div class="campo">
+                                    <label for="id">ID</label>
+                                    <input type="number" name="id" placeholder="Ingrese ID del producto" required autocomplete="off">
+                                </div>
                                 
                                 <div class="campo">
                                     <label for="nombre">Nombre</label>
@@ -282,20 +282,20 @@
                                     <input type="number" name="cantidadmin" placeholder="Ingrese cantidad de productos" required autocomplete="off">
                                 </div>
 
-                                <div id = "campo2">
-                                    <div id = "campo2">
-                                        <input type="checkbox" id = "box">
-                                        <div id = "Letra1">IVA</div>
+                                <div class="flex-container">
+                                    <div class = "campo">
+                                        <input type="checkbox" name="iva">
+                                        <label for="iva">Iva</label>                           
                                     </div>
-                                    
-                                                     
-                                    <div id = "Imagen">Imagen:
-                                        <button type="button" class="btn btn-secondary btn-sm" id = "btn-sm">Upload image</button>
-                                    </div>                                       
+
+                                    <div class="Imagen">
+                                        <label for="img">Subir imagen:</label>
+                                        <input type="file" name="img" required> 
+                                    </div>
                                 </div>
                     
                                 <div>
-                                    <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar producto</button>   
+                                    <button type="submit" class="btn btn-primary btn-lg Guardar">Actualizar producto</button>   
                                 </div>
                             </form>
                         </div>
@@ -305,6 +305,7 @@
                     <table>
                         <thead>
                             <tr>
+                                <th><b>IMG PRODUCTO</b></th>
                                 <th>ID Productos</th>
                                 <th>Nombre</th>
                                 <th>Precio Unitario</th>
@@ -312,17 +313,22 @@
                                 <th>Precio de venta</th>
                                 <th>Cantidad</th>
                                 <th>Cantidad minima</th>
-    
-    
+                                <th>Iva</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             {% for producto in productos %}
                                 <tr>
+                                    <td><img src="{{ url_for('static', filename='img/Img-productos/' + producto.img) }}" alt="Imagen del producto" width="50" height="50"></td>
                                     <td>{{ producto.id }}</td>
                                     <td>{{ producto.nombre }}</td>
-                                    <td>{{ producto.email}}</td>
-                                    <td>{{ producto.fecha_inicio }}</td>
+                                    <td>{{ producto.preciouni }}</td>
+                                    <td>{{ producto.alternos }}</td>
+                                    <td>{{ producto.precioventa }}</td>
+                                    <td>{{ producto.cantidad }}</td>
+                                    <td>{{ producto.cantidadmin }}</td>
+                                    <td>{{ producto.iva }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -383,10 +389,6 @@
                         <button type="button" class="btn btn-primary btn-lg" id = "Guardar">Realizar Cotizacion</button>
                     </div>                                      
                 </div>
-            </div>
-    
-            <div class="pagina Descuento">
-                <div class="dentro">Descuento</div>
             </div>
     
             <div class="pagina Venta">

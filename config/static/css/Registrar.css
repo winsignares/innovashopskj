@@ -161,39 +161,18 @@ width: 20px;
 margin-top: 17px;
 }
 
-#container {
-display: flex;
-flex-direction: row;
+.Imagen {
+    font-weight: 400;
+    font-size: 25px;
+    width: 100%;
+    color: black;
+    margin: 3rem;
 }
 
-#Imagen {
-display: flex;
-flex-direction: row;
-margin-left: 150px;
-font-weight: 400;
-font-size: 25px;
-color: black;
-margin-top: 10px;
-margin-right: 100px;
-}
-
-#campo2 {
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-}
-
-#Letra1 {
-font-weight: 400;
-font-size: 25px;
-margin-top: 10px;
-
-}
-
-#RegistroProveedor {
-    background: #FFFFFF;
+.flex-container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;  
+    align-items: center; 
 }
 
 #titulo {

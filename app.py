@@ -16,6 +16,9 @@ app.register_blueprint(ruta_empresa, url_prefix="/controller")
 app.register_blueprint(ruta_proveedores, url_prefix="/controller")
 app.register_blueprint(ruta_vendedor, url_prefix="/controller")
 app.register_blueprint(ruta_clientes, url_prefix="/controller")
+app.config['UPLOAD_FOLDER'] = 'config/static/img/Img-productos/' 
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 
+
 
 @app.route('/', methods=['GET'])
 def index():

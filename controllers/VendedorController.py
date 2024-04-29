@@ -2,6 +2,7 @@ from flask import Blueprint, Flask, render_template,json, jsonify, redirect, ses
 from config.db import app, db, ma
 from models.VendedoresModel import Vendedor, VendedorSchema
 from models.ClienteModel import Cliente, ClientesSchema
+from models.ProductosModel import Productos, ProductoSchema
 
 ruta_vendedor = Blueprint("route_vendedor", __name__)
 
@@ -47,6 +48,7 @@ def portalvendedor():
     
     if 'usuario' in session:
         clientes = Cliente.query.all()
-        return render_template("./Portales/Portal_Vendedores.html", clientes=clientes)
+        productos = Productos.query.all()
+        return render_template("./Portales/Portal_Vendedores.html", clientes=clientes, productos=productos)
     else:
         return redirect('/')
