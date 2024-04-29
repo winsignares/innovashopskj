@@ -176,6 +176,9 @@
                             <div class="registroproducto">
                                 <button class="abrir-modal" data-modal-id="modal-productos">Agregar un producto</button>
                             </div>
+                            <div class="Descuentoproducto">
+                                <button class="abrir-modal" data-modal-id="modal-DescProducto">Aplicar Descuento</button>
+                            </div>
                         </div>
     
                         <div id="modal-productos" class="modal">
@@ -300,7 +303,38 @@
                             </form>
                         </div>
                     </div>
-                
+
+                    <div id="modal-DescProducto" class="modal">
+                        <div class="modal-contenido">
+                            <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
+                            <h2>Aplicar descuentos</h2>
+                            
+                            <form action="/actualizarproducto" method="post" enctype="multipart/form-data">
+
+                                <div class="campo">
+                                    <label for="id">ID:</label>
+                                    <input type="number" name="companyid" placeholder="Ingrese el ID del producto" autocomplete="off" required>
+                                </div>
+                                <div class="campo">
+                                    <label for="cantidad">Descuento:</label>
+                                    <input type="number" name="IVA" placeholder="Ingrese el porcentaje del descuento" autocomplete="off" required>
+                                </div>
+
+                                <div class="campo">
+                                    <label for="fecha_inicio">Periodo de Inicio:</label>
+                                    <input type="date" name="fecha_Inicio" placeholder="Ingrese la Periodo de Inicio del descuento" autocomplete="off" required>
+                                </div>
+
+                                <div class="campo">
+                                    <label for="fecha_final">Periodo Final:</label>
+                                    <input type="date" name="fecha_final" placeholder="Ingrese el periodo final" autocomplete="off" required>
+                                </div>                
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg Guardar">Aplicar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>              
                         
                     <table>
                         <thead>
@@ -342,7 +376,21 @@
                         <div id = "titulo">
                             Proveedor
                         </div>
-                                                               
+                        <div class= "Buscares">
+                            <div class="formulario">
+                                <form id="formulario-busqueda" onsubmit="return false;">
+                                    <label id = "id" style="margin-right: -4px"> <div id = "id2">ID:</div></label>
+                                    <input type="text" id="textbox" name="termino" placeholder="Buscar ID de Proveedor.." required >
+                                </form>
+                            </div> 
+                            <div class="formulario">
+                                <form id="formulario-busqueda" onsubmit="return false;">
+                                    <label id = "id" style="margin-right: -4px"> <div id = "id2">ID:</div></label>
+                                    <input type="text" id="textbox" name="termino" placeholder="Buscar ID de producto.." required >
+                                </form>
+                            </div>    
+                        </div>
+                                                                                 
                     </div>
                     <div id = "fila">
                         <div id = "divprincipal">
@@ -367,7 +415,7 @@
                         <div id = "divsecundario">
                             <div id = "producto">
                                 <div id = "img">
-                                    <img src="mesa.jpeg" alt="">
+                                    <img src="../static/img/Img-productos/mesa.jpeg" alt="">
 
                                 </div>
                                 <div id = "datos">

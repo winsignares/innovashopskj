@@ -192,7 +192,7 @@ margin-top: 17px;
 #fila {
     display: flex;
     flex-direction: row;
-    margin-top: 50px;
+    margin-top: 30px;
     width: 100%;
 }
 
@@ -273,5 +273,13 @@ margin-top: 17px;
     padding: 0;
     text-align: right;
     /* background: black; */
+}
+
+.Buscares {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 10px;
+
 }
 
