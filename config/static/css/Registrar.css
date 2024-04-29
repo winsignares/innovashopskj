@@ -130,6 +130,15 @@ font-size: 30px;
 justify-content: space-between;
 }
 
+#modulosFormato {
+
+    width: 500px;
+
+}
+
+
+
+
 #box {
 width: 25px;
 height: 25px;
@@ -150,9 +159,11 @@ margin: 10px 0px 0px 10px;
 }
 
 #titulo {
-font-weight: 400;
-font-size: 20px;
-color: black;
+    font-weight: 400;
+    font-size: 40px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
 }
 
 #box {
@@ -209,8 +220,6 @@ margin-top: 17px;
     width: 200px;
     height: 150px;
     margin: 20px;
-    background: black;
-
 }
 
 #datos {
@@ -273,6 +282,7 @@ margin-top: 17px;
     padding: 0;
     text-align: right;
     /* background: black; */
+    justify-content: space-between;
 }
 
 .Buscares {
@@ -293,4 +303,30 @@ margin-top: 17px;
     color: black;
     margin-top: 30px;
 }
+
+
+#HacerCompra {
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 450px;
+    height: 50px;
+}
+
+.completar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.total {
+    font-weight: 400;
+    font-size: 25px;
+    color: black;
+    margin-left: 50px;
+    margin-top: 22px;
+}
+
 
