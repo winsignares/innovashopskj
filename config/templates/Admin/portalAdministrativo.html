@@ -23,8 +23,6 @@
 
   <body>
     
-    
-      
       <button type="button" class="btn btn-outline-secondary" id = "cerrar-sesion">Cerrar sesión</button>
     
 
@@ -78,12 +76,7 @@
                           <option value="inactivo">Inactivo</option>
                       </select>
                     </div>
-                  
-                    <div class="campo">
-                      <label for="IVA">IVA:</label>
-                      <input type="number" name="IVA" placeholder="Ingrese el IVA" autocomplete="off" required>
-                    </div>
-                
+
                     <div class="campo">
                       <label for="fecha_inicio">Fecha de Inicio:</label>
                       <input type="date" name="fecha_Inicio" placeholder="Ingrese la fecha de Inicio" autocomplete="off" required>
@@ -127,7 +120,6 @@
                       <th>Correo</th>
                       <th>Ubicación</th>
                       <th>Estado</th>
-                      <th>IVA</th>
                       <th>Fecha de Inicio</th>
                       <th>Fecha Final</th>
                   </tr>
@@ -140,7 +132,6 @@
                       <td>{{ empresa.mail_emp }}</td>
                       <td>{{ empresa.ubicacion }}</td>
                       <td>{{ empresa.status }}</td>
-                      <td>{{ empresa.IVA }}</td>
                       <td>{{ empresa.fecha_Inicio }}</td>
                       <td>{{ empresa.fecha_final }}</td>
                   </tr>
@@ -154,11 +145,11 @@
               <input type="checkbox" id = "box">
               Modulo de descuento          
             </div> 
-            <div id = "modulosFormato2">
+            <div id = "modulosFormato">
               <input type="checkbox" id = "box">
               Modulo de Cliente          
             </div>    
-            <div id = "modulosFormato2">
+            <div id = "modulosFormato">
               <input type="checkbox" id = "box">
               Modulo de compra            
             </div>          
@@ -169,7 +160,7 @@
               <input type="checkbox" id = "box">
               Modulo de existencia       
             </div> 
-            <div id = "modulosFormato2">
+            <div id = "modulosFormato">
               <input type="checkbox" id = "box">
               Modulo de informes   
             </div>    

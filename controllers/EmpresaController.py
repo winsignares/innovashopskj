@@ -19,8 +19,7 @@ def crear_empresa():
         nombre = request.form['name_emp']
         mail = request.form['mail_emp']
         ubicacion = request.form['ubicacion']
-        status = request.form['status']
-        IVA = int(request.form['IVA'])  
+        status = request.form['status'] 
         fecha_inicio = request.form['fecha_Inicio']
         fecha_final = request.form['fecha_final']
         user = request.form['user'] 
@@ -40,7 +39,6 @@ def crear_empresa():
             mail_emp=mail,
             ubicacion=ubicacion,
             status=status,
-            IVA=IVA,
             fecha_Inicio=fecha_inicio,
             fecha_final=fecha_final,
             user = user,

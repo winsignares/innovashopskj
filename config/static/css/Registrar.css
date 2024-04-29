@@ -130,6 +130,15 @@ font-size: 30px;
 justify-content: space-between;
 }
 
+#modulosFormato {
+
+    width: 500px;
+
+}
+
+
+
+
 #box {
 width: 25px;
 height: 25px;
