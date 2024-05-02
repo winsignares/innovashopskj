@@ -59,14 +59,16 @@ def registrar_productos():
 @app.route('/buscar_productos', methods=['GET'])
 def buscar_productos():
     termino = request.args.get('termino', '')
+    
+    if not termino:
+        return jsonify([])  # Devuelve una lista vacía si el término está vacío
+    
+    # Buscar productos por nombre (ilike es insensible a mayúsculas/minúsculas)
     productos = Productos.query.filter(Productos.nombre.ilike(f"%{termino}%")).limit(10).all()
-    return jsonify([producto.nombre for producto in productos])
+    
+    # Devolver una lista de objetos con el ID y el nombre para el frontend
+    return jsonify([{'id': producto.id, 'nombre': producto.nombre} for producto in productos])
 
-def safe_float(value, default=0.0):
-    try:
-        return float(value)
-    except (ValueError, TypeError):
-        return default
 
 @app.route('/parametrizar', methods=['POST'])
 def parametrizar_producto():

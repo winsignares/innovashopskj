@@ -82,14 +82,6 @@
     color: black;
 }
 
-#containerTabla {
-        margin-top: 5px;
-        background: #D9D9D9;
-        height: 750px;
-        width: 100%;
-        border-radius: 10px;
-}
-
 
 #textbox {
 overflow-wrap: break-word;
@@ -135,8 +127,6 @@ justify-content: space-between;
     width: 500px;
 
 }
-
-
 
 
 #box {
@@ -186,11 +176,6 @@ margin-top: 17px;
     align-items: center; 
 }
 
-#titulo {
-  font-weight: 400;
-  font-size: 40px;
-  color: black;
-}
 
 #divprincipal, #divsecundario {
     width: 750px;
@@ -207,20 +192,8 @@ margin-top: 17px;
     width: 100%;
 }
 
-#producto {
-    margin-top: 10px;
-    border-radius: 20px;
-    background: white;
-    display: flex;
-    width: 100%;
-}
 
-#img {
-    display: flex;
-    width: 200px;
-    height: 150px;
-    margin: 20px;
-}
+
 
 #datos {
     font-weight: 400;
@@ -257,12 +230,6 @@ margin-top: 17px;
     margin-right: 30px;
 }
 
-#cantidad {
-    text-align: center;
-    border-radius: 20px;
-    width: 100px;
-    height: 30px;
-}
 
 #check {
     margin-left: 150px;
@@ -271,11 +238,6 @@ margin-top: 17px;
 
 }
 
-#Portal {
-    font-weight: 100;
-    font-size: 30px;
-    color: black;
-}
 
 #buton {
     width: 100%;
@@ -398,7 +360,6 @@ margin-top: 17px;
     border-radius: 6px;
     border: none;
     outline: none;
-    /* margin-left: 50px; */
     width: 100px;
   
   }

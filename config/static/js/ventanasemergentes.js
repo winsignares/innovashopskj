@@ -1,3 +1,4 @@
+//Codigo para las ventanas emergentes
 document.querySelectorAll(".abrir-modal").forEach(function (boton) {
     boton.addEventListener("click", function () {
         event.stopPropagation();
@@ -20,34 +21,51 @@ window.addEventListener("click", function (event) {
     }
 });
 
+
+//Codigo para buscar los productos alternos
 document.getElementById('buscar_alternos').addEventListener('input', function() {
-    const termino = this.value;
+    const termino = this.value.trim(); // Asegúrate de eliminar espacios al inicio y al final
     const sugerenciasContainer = document.getElementById('sugerencias_alternos');
 
     if (termino.length >= 2) {  
-        fetch(`/buscar_productos?termino=${termino}`)
+        fetch(`/buscar_productos?termino=${encodeURIComponent(termino)}`) // Codifica el término para evitar problemas de seguridad
             .then(response => response.json())
             .then(data => {
-
                 sugerenciasContainer.innerHTML = '';
 
-                data.forEach(producto => {
-                    const suggestion = document.createElement('div');
-                    suggestion.className = 'sugerencia';
-                    suggestion.textContent = producto;
+                if (data.length > 0) {
+                    data.forEach(producto => {
+                        // Asegúrate de usar `producto.nombre` para el texto de la sugerencia
+                        const suggestion = document.createElement('div');
+                        suggestion.className = 'sugerencia';
+                        suggestion.textContent = producto.nombre; // Muestra el nombre del producto
 
-                    suggestion.addEventListener('click', function() {
-                        const alternosField = document.getElementById('alternos_seleccionados');
-                        alternosField.value += (alternosField.value ? ',' : '') + producto;  
-                        document.getElementById('buscar_alternos').value = '';  
-                        sugerenciasContainer.innerHTML = '';  
+                        suggestion.addEventListener('click', function() {
+                            const alternosField = document.getElementById('alternos_seleccionados');
+                            const alternos = alternosField.value.split(',').map(val => val.trim()).filter(Boolean);
+
+                            // Comprueba si el producto ya está en la lista para evitar duplicados
+                            if (!alternos.includes(producto.nombre)) { 
+                                alternos.push(producto.nombre); // Añade el nombre del producto a la lista
+                                alternosField.value = alternos.join(','); // Actualiza el campo oculto con valores separados por comas
+                            }
+
+                            document.getElementById('buscar_alternos').value = ''; // Limpiar el campo de entrada
+                            sugerenciasContainer.innerHTML = '';  // Limpiar las sugerencias
+                        });
+
+                        sugerenciasContainer.appendChild(suggestion); // Añadir la sugerencia al contenedor
                     });
-
-                    sugerenciasContainer.appendChild(suggestion);
-                });
+                } else {
+                    // Si no hay resultados, muestra un mensaje apropiado
+                    const noResult = document.createElement('div');
+                    noResult.className = 'sugerencia';
+                    noResult.textContent = 'No se encontraron resultados';
+                    sugerenciasContainer.appendChild(noResult);
+                }
             });
     } else {
-        sugerenciasContainer.innerHTML = ''; 
+        sugerenciasContainer.innerHTML = ''; // Limpiar sugerencias si el término es muy corto
     }
 });
 

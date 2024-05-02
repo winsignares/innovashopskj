@@ -16,8 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode/dist/JsBarcode.all.min.js"></script>
     <script src="../static/js/app.js" defer></script>
     <script src="../static/js/ventanasemergentes.js" defer></script>
-    <script src="../static/js/parametrizacion.js" defer></script>
-    <script src="../static/js/descripcion.js" defer></script>
+    <script src="../static/js/Tablas.js" defer></script>
 </head>
 <body>
     <div class="menu-dashboard open">
@@ -57,11 +56,9 @@
             </div>
             
             <br><br>
-            <div class="enlace">
-                <a onclick="salir()">
-                    <div class="bx bx-log-out"></div>
-                    <span>Salir</span>
-                </a>
+            <div class="enlace" onclick="salir()">
+                <div class="bx bx-log-out"></div>
+                <span>Salir</span>
             </div>
         </div>
     </div>
@@ -225,24 +222,17 @@
                                     <label for="nombre">Nombre</label>
                                     <input type="text" name="nombre" placeholder="Ingrese nombre" required autocomplete="off">
                                 </div>
-                                
-                                <div class="campo">
-                                    <label for="preciouni">Precio por unidad</label>
-                                    <input type="number" name="preciouni" placeholder="0" readonly>
-                                </div>
                 
                                 <div class="campo">
                                     <label for="buscar_alternos">Productos alternos</label>
-                                    <input type="text" id="buscar_alternos" placeholder="Buscar productos alternos" autocomplete="off">
+                                    <div class="input-search-wrapper">
+                                        <input type="text" id="buscar_alternos" placeholder="Buscar productos alternos" autocomplete="off">
+                                        <i class='bx bx-search-alt' class="icono-lupa"></i>
+                                    </div>
                                     <div id="sugerencias_alternos" class="sugerencias"></div>
                                 </div>
                                 
                                 <input type="hidden" name="alternos" id="alternos_seleccionados" value="">
-
-                                <div class="campo">
-                                    <label for="precioventa">Precio de venta</label>
-                                    <input type="number" name="precioventa" placeholder="0" readonly>
-                                </div>
 
                                 <div class="campo">
                                     <label for="cantidad">Cantidad</label>
@@ -252,11 +242,6 @@
                                 <div class="campo">
                                     <label for="cantidadmin">Cantidad minima en stock</label>
                                     <input type="number" name="cantidadmin" placeholder="Ingrese cantidad de productos" required autocomplete="off">
-                                </div>
-
-                                <div class = "campo">
-                                    <label for="iva">IVA</label>     
-                                    <input type="number" name="iva" placeholder="0" readonly>                                                         
                                 </div>
 
                                 <div class="Imagen">
@@ -497,8 +482,6 @@
                             {% endfor %}
                         </tbody>
                     </table>
-
-                    
                 </div>
             </div>
     

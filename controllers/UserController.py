@@ -23,7 +23,9 @@ def ingresar():
         resultado1 = user_schema.dump(user1)
         session['usuario'] = resultado1
     
-        return redirect('/Portal_Empresa')
+        response = redirect('/Portal_Empresa')
+        response.set_cookie('isAuthenticated', 'true')
+        return response
     elif vendedor:
         resultado2 = user_schema.dump(vendedor)
         session['usuario'] = resultado2

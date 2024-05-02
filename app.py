@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request, jsonify, json, session, render_template
+from flask import Flask, make_response, redirect, request, jsonify, json, session, render_template
 from config.db import app, db
 
 from controllers.UserController import ruta_user, User
@@ -23,6 +23,14 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 @app.route('/', methods=['GET'])
 def index():
     return render_template("login.html")
+
+@app.route("/")
+def login():
+    response = make_response(render_template("login.html"))
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, post-check=0, pre-check=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
 
 if __name__ == "__main__":
     app.run(debug=True)
