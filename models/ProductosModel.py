@@ -12,8 +12,13 @@ class Productos (db.Model):
     cantidadmin = db.Column(db.String(70))
     iva = db.Column(db.Float())
     img = db.Column(db.String(255), nullable=True)
+    #proveedor_id = db.Column(db.Integer, db.ForeignKey('Proveedor.id'))
+    #empresa_id = db.Column(db.Integer, db.ForeignKey('EMP.companyid'))
     
-    def __init__(self, id, nombre, preciouni, alternos, precioventa, cantidad, cantidadmin, iva, img=None):
+    #proveedor = db.relationship('Proveedor', backref=db.backref('productos', lazy=True))
+    #empresa = db.relationship('EMP', backref=db.backref('productos', lazy=True))
+    
+    def __init__(self, id, nombre, preciouni, alternos, precioventa, cantidad, cantidadmin, iva, proveedor_id, empresa_id, img=None):
         self.id = id
         self.nombre = nombre  
         self.preciouni = preciouni  
@@ -22,8 +27,10 @@ class Productos (db.Model):
         self.cantidad = cantidad 
         self.cantidadmin = cantidadmin  
         self.iva = iva
+        #self.proveedor_id = proveedor_id
+        #self.empresa_id = empresa_id
         self.img = img
-    
+
 with app.app_context():
     db.create_all()
 
