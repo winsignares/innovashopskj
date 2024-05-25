@@ -17,6 +17,19 @@
     <script src="../static/js/app.js" defer></script>
     <script src="../static/js/ventanasemergentes.js" defer></script>
     <script src="../static/js/Tablas.js" defer></script>
+    <style>
+        .low-stock {
+            background-color: #ffcccc;
+        }
+
+        .medium-stock {
+            background-color: #ffffcc;
+        }
+
+        .high-stock {
+            background-color: #ccffcc;
+        }
+    </style>
 </head>
 <body>
     <div class="menu-dashboard open">
@@ -256,53 +269,37 @@
                         </div>
                     </div>
 
-                    <div id="modal-Actproductos" class="modal">
+                     <div id="modal-Actproductos" class="modal">
                         <div class="modal-contenido">
                             <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
                             <h2>Actualizar Productos</h2>
                             
                             <form action="/actualizarproducto" method="post" enctype="multipart/form-data">
-
                                 <div class="campo">
                                     <label for="id">ID</label>
                                     <input type="number" name="id" placeholder="Ingrese ID del producto" required autocomplete="off">
                                 </div>
-                                
+
                                 <div class="campo">
                                     <label for="nombre">Nombre</label>
-                                    <input type="text" name="nombre" placeholder="Ingrese nombre" autocomplete="off">
+                                    <input type="text" name="nombre" placeholder="Ingrese nombre" required autocomplete="off">
                                 </div>
-                
-                                <div class="campo">
-                                    <label for="buscar_alternos">Productos alternos</label>
-                                    <input type="text" id="buscar_alternos" placeholder="Buscar productos alternos" autocomplete="off">
-                                    <div id="sugerencias_alternos" class="sugerencias"></div>
-                                </div>
-                                
-                                <input type="hidden" name="alternos" id="alternos_seleccionados" value="">
-
+        
                                 <div class="campo">
                                     <label for="cantidad">Cantidad</label>
                                     <input type="number" name="cantidad" placeholder="Ingrese cantidad de productos" required autocomplete="off">
                                 </div>
-
+        
                                 <div class="campo">
-                                    <label for="cantidadmin">Cantidad minima en stock</label>
-                                    <input type="number" name="cantidadmin" placeholder="Ingrese cantidad de productos" required autocomplete="off">
+                                    <label for="cantidadmin">Cantidad mínima en stock</label>
+                                    <input type="number" name="cantidadmin" required autocomplete="off">
                                 </div>
-
-                                
-                                <div class = "campo">
-                                    <label for="iva">IVA</label>  
-                                    <input type="number" name="iva" placeholder="0" readonly>                  
-                                </div>
-
+        
                                 <div class="Imagen">
                                     <label for="img">Subir imagen:</label>
-                                    <input type="file" name="img" required> 
+                                    <input type="file" name="img"> 
                                 </div>
-                            
-                    
+                                
                                 <div>
                                     <button type="submit" class="btn btn-primary btn-lg Guardar">Actualizar producto</button>   
                                 </div>
@@ -446,8 +443,6 @@
                         </div>
                     </div>  
                     
-
-                        
                     <table>
                         <thead>
                             <tr>
@@ -458,14 +453,15 @@
                                 <th>Productos alternos</th>
                                 <th>Precio de venta</th>
                                 <th>Cantidad</th>
-                                <th>Cantidad minima</th>
+                                <th>Cantidad mínima</th>
                                 <th>Iva</th>
-                                <th>parametrizacion</th>
+                                <th>Parametrización</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="productos-tbody">
                             {% for producto in productos %}  
-                                <tr class="abrir-modal" data-modal-id="modal-DescripcionProducto" style="cursor: pointer;">
+                                <tr class="abrir-modal" data-modal-id="modal-DescripcionProducto" style="cursor: pointer;" 
+                                    data-cantidad="{{ producto.cantidad }}" data-cantidadmin="{{ producto.cantidadmin }}">
                                     <td><img src="{{ url_for('static', filename='img/Img-productos/' + producto.img) }}" alt="Imagen del producto" width="50" height="50"></td>
                                     <td>{{ producto.id }}</td>
                                     <td>{{ producto.nombre }}</td>
@@ -664,6 +660,75 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const rows = document.querySelectorAll('#productos-tbody tr');
+
+            rows.forEach(row => {
+                const cantidad = parseInt(row.getAttribute('data-cantidad'));
+                const cantidadMin = parseInt(row.getAttribute('data-cantidadmin'));
+
+                if (cantidad <= cantidadMin) {
+                    row.classList.add('low-stock');
+                } else if (cantidad > cantidadMin && cantidad <= cantidadMin * 2) {
+                    row.classList.add('medium-stock');
+                } else {
+                    row.classList.add('high-stock');
+                }
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            const rows = document.querySelectorAll('#productos-tbody tr');
+
+            rows.forEach(row => {
+                const cantidad = parseInt(row.getAttribute('data-cantidad'));
+                const cantidadMin = parseInt(row.getAttribute('data-cantidadmin'));
+
+                if (cantidad <= cantidadMin) {
+                    row.classList.add('low-stock');
+                } else if (cantidad > cantidadMin && cantidad <= cantidadMin * 2) {
+                    row.classList.add('medium-stock');
+                } else {
+                    row.classList.add('high-stock');
+                }
+            });
+
+            // Copiar la cantidad mínima del registro al actualizar
+            const cantidadInput = document.getElementById('cantidad');
+            const cantidadMinInput = document.getElementById('cantidadmin');
+            const actCantidadMinInput = document.getElementById('cantidadmin_actualizar');
+
+            cantidadInput.addEventListener('input', function() {
+                cantidadMinInput.value = cantidadInput.value;
+            });
+
+            document.querySelectorAll('.abrir-modal').forEach(button => {
+                button.addEventListener('click', function() {
+                    const modalId = button.getAttribute('data-modal-id');
+                    const modal = document.getElementById(modalId);
+                    if (modalId === 'modal-Actproductos') {
+                        actCantidadMinInput.value = cantidadMinInput.value;
+                    }
+                    modal.style.display = 'block';
+                });
+            });
+
+            document.querySelectorAll('.cerrar-modal').forEach(span => {
+                span.addEventListener('click', function() {
+                    const modal = span.closest('.modal');
+                    modal.style.display = 'none';
+                });
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                }
+            });
+        });
+   </script>
 </body>
 </html>
 {% endblock %}
