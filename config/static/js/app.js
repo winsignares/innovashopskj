@@ -1,3 +1,4 @@
+//Codigo del dashboard
 document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.querySelector(".toggle");
   const menuDashboard = document.querySelector(".menu-dashboard");
@@ -26,13 +27,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function salir() {
     localStorage.clear();
-    window.location.href = "/";
     history.replaceState({}, "", "/");
+    window.location.href = "/";
   }
 
-  const botonSalir = document.querySelector(".menu .enlace a[onclick='salir()']");
+  function saliradmin() {
+    localStorage.clear();
+    history.replaceState({}, "", "/loginad");
+    window.location.href = "/loginad";
+  }
+
+  const botonSalir = document.querySelector(".menu .enlace[onclick='salir()']");
+  const botonSaliradmin = document.querySelector(".menu .enlace[onclick='saliradmin()']");
   if (botonSalir) {
-    botonSalir.addEventListener('click', salir);
+    botonSalir.addEventListener('click', function(event) {
+        event.stopPropagation(); 
+        salir(); 
+    });
+  }
+  if (botonSaliradmin) {
+    botonSaliradmin.addEventListener('click', function(event) {
+        event.stopPropagation(); 
+        saliradmin(); 
+    });
   }
 
 

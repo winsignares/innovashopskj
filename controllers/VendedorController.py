@@ -1,5 +1,6 @@
 from flask import Blueprint, Flask, render_template,json, jsonify, redirect, session, request
 from config.db import app, db, ma
+from controllers.UserController import token_required
 from models.VendedoresModel import Vendedor, VendedorSchema
 from models.ClienteModel import Cliente, ClientesSchema
 from models.ProductosModel import Productos, ProductoSchema
@@ -44,6 +45,7 @@ def registrar_vendedor():
 
 
 @app.route('/Portal_Vendedor')
+@token_required
 def portalvendedor():
     
     if 'usuario' in session:

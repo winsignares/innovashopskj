@@ -16,19 +16,52 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../static/css/Registrar.css">
     <link rel="stylesheet" href="../static/css/Tablas.css">
+    <link rel="stylesheet" href="../static/css/Portales.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../static/js/ventanasemergentes.js" defer></script>
-    <script src="../static/js/new.js" defer></script>
+    <script src="../static/js/Tablas.js" defer></script>
+    <script src="../static/js/app.js" defer></script>
+    
   </head>
 
   <body>
-    
-      <button type="button" class="btn btn-outline-secondary" id = "cerrar-sesion">Cerrar sesión</button>
-    
+    <div class="menu-dashboard open">
+      <div class="top-menu">
+          <div class="logo">
+              <img src="../static/img/s-png-28667.png" alt="">
+              <span>Innovashop</span>
+          </div>
+          <div class="toggle">
+              <i class='bx bx-menu'></i>
+          </div>
+      </div>
+      <div class="input-search">
+          <i class='bx bx-search-alt' ></i>
+          <input type="text" class="input" placeholder="Buscar">
+      </div>
+      <div class="menu">
 
-      <div class="cont" >
-        <h2>Portal Administrativo</h2>
+          <div class="enlace" data-pagina="Admin">
+              <i class='bx bxs-user'></i>
+              <span>Admin</span>
+          </div>
+  
+          <br><br>
+          <div class="enlace " onclick="saliradmin()">
+              <div class="bx bx-log-out"></div>
+              <span>Salir</span>
+          </div>
+      </div>
+    </div>
 
+    <div class="main--content">
+      <div class="header--wrapper">
+          <div class="header--tittle">
+              <span id = "titulo">Portal Administrativo</span>
+          </div>
+      </div>
+
+      <div class="pagina Admin">
         <div class="dentro">
           <div class="contenedor">                      
             <div class="containerform">
@@ -96,6 +129,11 @@
                         <label for="password">Contraseña</label>
                         <input type="text" name="password" placeholder="Ingrese el password" required>
                     </div>
+
+                    <div class="campo">
+                      <label for="admin_id">ID del Administrador:</label>
+                      <input type="number" name="admin_id" placeholder="Ingrese el ID del administrador" required>
+                    </div>
                 
                     <button type="submit" class="btn btn-primary btn-lg Guardar">Crear</button>
   
@@ -111,35 +149,33 @@
             </div>
           </div>
 
-          <div id = "containerTabla">
-            <table>
-              <thead>
-                  <tr>
-                      <th>ID Empresa</th>
-                      <th>Nombre</th>
-                      <th>Correo</th>
-                      <th>Ubicación</th>
-                      <th>Estado</th>
-                      <th>Fecha de Inicio</th>
-                      <th>Fecha Final</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  {% for empresa in empresas %}
-                  <tr>
-                      <td>{{ empresa.companyid }}</td>
-                      <td>{{ empresa.name_emp }}</td>
-                      <td>{{ empresa.mail_emp }}</td>
-                      <td>{{ empresa.ubicacion }}</td>
-                      <td>{{ empresa.status }}</td>
-                      <td>{{ empresa.fecha_Inicio }}</td>
-                      <td>{{ empresa.fecha_final }}</td>
-                  </tr>
-                  {% endfor %}
-              </tbody>
-            </table>
-
-          </div>
+          <table>
+            <thead>
+                <tr>
+                    <th>ID Empresa</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Ubicación</th>
+                    <th>Estado</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Fecha Final</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empresa in empresas %}
+                <tr>
+                    <td>{{ empresa.companyid }}</td>
+                    <td>{{ empresa.name_emp }}</td>
+                    <td>{{ empresa.mail_emp }}</td>
+                    <td>{{ empresa.ubicacion }}</td>
+                    <td>{{ empresa.status }}</td>
+                    <td>{{ empresa.fecha_Inicio }}</td>
+                    <td>{{ empresa.fecha_final }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+          <br><br><br><br><br><br>
           <div id = "modulos">
             <div id = "modulosFormato">
               <input type="checkbox" id = "box">
@@ -172,9 +208,7 @@
           </div>
           
         </div>
-
       </div>
-
     </div>
   </body>
 </html>

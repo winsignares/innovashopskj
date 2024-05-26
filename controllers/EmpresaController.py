@@ -1,10 +1,12 @@
 from flask import Blueprint, jsonify, render_template, request, redirect, session, url_for, flash
 from config.db import db, app
+from controllers.UserController import token_required
 from models.EmpresaModel import EMP, EMPSchema
 from models.VendedoresModel import Vendedor, VendedorSchema
 from models.ClienteModel import Cliente, ClientesSchema
 from models.ProveedoresModel import Proveedor, ProveedoresSchema
 from models.ProductosModel import Productos, ProductoSchema
+from models.AdministradorModel import Admin, AdminSchema
 
 ruta_empresa = Blueprint('ruta_empresa', __name__)
 
@@ -24,6 +26,11 @@ def crear_empresa():
         fecha_final = request.form['fecha_final']
         user = request.form['user'] 
         password = request.form['password'] 
+        admin_id = request.form['admin_id']
+
+        administrador = Admin.query.filter_by(id=admin_id).first()
+        if not administrador:
+            return jsonify({"error": "El admin_id proporcionado no existe."}), 400
         
         empresa_existente = EMP.query.filter_by(companyid=id_empresa).all()
         usuario = EMP.query.filter_by(user=user).all()
@@ -42,7 +49,8 @@ def crear_empresa():
             fecha_Inicio=fecha_inicio,
             fecha_final=fecha_final,
             user = user,
-            password = password
+            password = password,
+            admin_id=admin_id
         )
 
         db.session.add(nueva_empresa)
@@ -50,7 +58,9 @@ def crear_empresa():
 
     return redirect('/portaladmin')
 
+
 @app.route('/Portal_Empresa', methods=['GET'])
+@token_required
 def portalempresa():
     
     if 'usuario' in session:
@@ -58,8 +68,12 @@ def portalempresa():
         clientes = Cliente.query.all()
         proveedores = Proveedor.query.all()
         productos = Productos.query.all()
-        return render_template("./Portales/Portal_Empresa.html", usuario = session['usuario'], vendedores=vendedores, clientes=clientes, proveedores=proveedores, productos=productos)
+        empresas = EMP.query.all()
+        return render_template("./Portales/Portal_Empresa.html", usuario = session['usuario'], vendedores=vendedores, clientes=clientes, proveedores=proveedores, productos=productos, empresas=session['usuario'])
     else:
         return redirect('/')
+    
+    
+
 
 

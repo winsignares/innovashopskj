@@ -53,31 +53,15 @@ button:hover {
   background-color: #2A49FF;
 }
 
-#formulario {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin: 20px auto;
-  max-width: 500px;
-  background-color: white;
+.formulario{
+  margin: 1rem;
 }
-  
-#formulario label {
-  display: block;
-  margin-bottom: 5px;
-}
-  
-#formulario input,
-#formulario select {
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  margin-bottom: 15px;
-}
+
 
 .containerform{
   display: flex;
   justify-content: space-between;
+
 }
 
 .sugerencias {

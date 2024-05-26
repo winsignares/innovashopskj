@@ -16,6 +16,7 @@ def registrar_proveedor():
         Email = request.form['email'] 
         Direccion = request.form['direccion']
         Telefono = request.form['telefono'] 
+        
 
         proveedor_existente = Proveedor.query.filter_by(id=id_proveedor).all()
         

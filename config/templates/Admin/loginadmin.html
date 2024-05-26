@@ -1,5 +1,6 @@
 {% extends "login.html" %}
 {% block content %}
+<<<<<<< HEAD
 
 <style>
     .gradient-custom {
@@ -28,53 +29,65 @@
     
 </style>
     
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../static/css/login.css">
+  <script src="../static/js/login.js" defer></script>
+</head>
+>>>>>>> 42f600babe25c09cefc5ba898471c86eaf1219f7
 <body>
-    <section class="vh-100 gradient-custom">
-        <div class="container py-5 h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-9 col-lg-6 col-xl-5">
-              <div class="card text-white fondo" style="border-radius: 1rem;">
-                <div class="card-body p-5 text-center ">
-      
-                    <div class="d-flex align-items-center h-custom-2 px-0 ms-xl-4 mt-1 pt-3 pt-xl-5 mt-xl-n5">
-          
-                        <form style="width: 30rem;" action="/ingresaradmin" method="POST">
-                          
-                          <h1 class="fw-normal mb-3 pb-4" style="letter-spacing: 1px; text-align: center; font-family: 'Newsreader';">Modo Administrador</h1>
-              
-                          <h5 style="text-align: left; font-family: 'Mulish';">Bienvenido de vuelta</h5>
+  
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-9 col-lg-6 col-xl-5">
+        <div class="card text-white fondo" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center ">
 
-                          <div class="form-outline mb-4 divlabel">
-                            <label class="form-label" for="loginuser">Usuario</label>
-                            <input type="user" name="userad" class="form-control form-control-lg input" required  autocomplete="off" placeholder="Ingrese su usuario"/>
-                          </div>
-              
-                          <div class="form-outline mb-4 divlabel">
-                            <label class="form-label" for="loginpassword">Contraseña</label>
-                            <input type="password" name="passwordad" class="form-control form-control-lg input" required autocomplete="off" placeholder="Ingrese su contraseña" />
-                          </div><br>
-              
-                          <div class="pt-1 mb-4">
-                            <button class="btn btn-info btn-lg btn-block btnfondo" type="submit">Acceder</button>
-                          </div>
+              <div class="d-flex align-items-center h-custom-2 px-0 ms-xl-4 mt-1 pt-3 pt-xl-5 mt-xl-n5">
+    
+                  <form style="width: 30rem;" action="/ingresaradmin" method="POST">
+                    
+                    <h1 class="fw-normal mb-3 pb-4" style="letter-spacing: 1px; text-align: center; font-family: 'Newsreader';">Modo Administrador</h1>
+        
+                    <h5 style="text-align: left; font-family: 'Mulish';">Bienvenido de vuelta</h5>
 
-                        </form>
-              
+                    <div class="form-outline mb-4 divlabel">
+                      <label class="form-label" for="loginuser">Usuario</label>
+                      <input type="user" name="userad" class="form-control form-control-lg input" required  autocomplete="off" placeholder="Ingrese su usuario"/>
                     </div>
-      
-                  <div>
-                    <p>
-                        <br>
-                        <a href="/" class="text-white-50 fw-bold">Volver</a>
-                    </p>
-                  </div>
-      
-                </div>
+        
+                    <div class="form-outline mb-4 divlabel">
+                      <label class="form-label" for="loginpassword">Contraseña</label>
+                      <input type="password" name="passwordad" class="form-control form-control-lg input" required autocomplete="off" placeholder="Ingrese su contraseña" />
+                    </div><br>
+        
+                    <div class="pt-1 mb-4">
+                      <button class="btn btn-info btn-lg btn-block btnfondo" type="submit">Acceder</button>
+                    </div>
+
+                  </form>
+        
               </div>
+
+            <div>
+              <p>
+                  <br>
+                  <a href="/" class="text-white-50 fw-bold">Volver</a>
+              </p>
             </div>
+
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 </body>
-
+</html>
 {% endblock %}

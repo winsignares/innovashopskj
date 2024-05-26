@@ -1,4 +1,4 @@
-from config.db import app, db, ma 
+from config.db import app, db, ma
 
 class Admin(db.Model):
     __tablename__ = 'administrador'
@@ -10,10 +10,11 @@ class Admin(db.Model):
     def __init__(self, userad, passwordad):
       self.userad = userad
       self.passwordad = passwordad
-    
+
 with app.app_context():
     db.create_all()
 
 class AdminSchema(ma.Schema):
     class Meta:
         fields = ('id', 'userad', 'passwordad')
+        
