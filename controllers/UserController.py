@@ -78,6 +78,7 @@ def ingresar():
     elif empresa:
         token = generar_token(empresa.companyid)
         session['usuario'] = user_schema.dump(empresa)
+        session['company_id'] = empresa.companyid
         response = redirect('/Portal_Empresa')
         response.set_cookie('token', token)
         return response

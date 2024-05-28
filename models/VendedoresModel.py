@@ -9,9 +9,7 @@ class Vendedor(db.Model):
     fecha_inicio = db.Column(db.Date)
     user = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(50))
-    #company_id = db.Column(db.Integer, db.ForeignKey('EMP.companyid'))
-    
-    #empresa = db.relationship('EMP', backref=db.backref('vendedores', lazy=True))
+    company_id = db.Column(db.Integer, db.ForeignKey('EMP.companyid'))
     
     def __init__(self, id, nombre, email, fecha_inicio, user, password, company_id):
       self.id = id
@@ -20,11 +18,10 @@ class Vendedor(db.Model):
       self.fecha_inicio = fecha_inicio
       self.user = user
       self.password = password
-#self.company_id = company_id
+      self.company_id = company_id
     
 with app.app_context():
     db.create_all()
-
 class VendedorSchema(ma.Schema):
     class Meta:
         fields = ('id', 'nombre', 'email', 'fecha_inicio', 'user','password')
