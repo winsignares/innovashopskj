@@ -21,7 +21,7 @@ def registrar_vendedor():
         Fecha_inicio = request.form['fecha_inicio']
         user = request.form['user'] 
         password = request.form['password'] 
-        company_id = session.get('company_id')  # Obtener la empresa actual de la sesión
+        company_id = session.get('company_id')  
 
         if not company_id:
             return jsonify({"error": "No hay una empresa actual en sesión."}), 400

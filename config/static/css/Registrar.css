@@ -402,7 +402,25 @@ margin-top: 17px;
     }
 }
 
+.modal-contenido {
+    margin: auto;
+}
 
+.info{
+    margin: 1rem;
+}
+
+.contenedorProductos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.productoInfo {
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 46%;
+}
 
 
 
