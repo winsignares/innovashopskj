@@ -1,4 +1,5 @@
 from config.db import app, db, ma 
+from sqlalchemy_utils import create_database, database_exists
 
 class EMP(db.Model):
     __tablename__ = 'EMP'
@@ -15,6 +16,7 @@ class EMP(db.Model):
     admin_id = db.Column(db.Integer, db.ForeignKey('administrador.id'))
 
     admin = db.relationship('Admin', backref=db.backref('empresas', lazy=True))
+    vendedores = db.relationship('Vendedor', backref='empresa', lazy=True)
     
     def __init__(self,companyid, name_emp, mail_emp, ubicacion, status, fecha_Inicio, fecha_final, user, password, admin_id):
         self.companyid = companyid
@@ -27,7 +29,17 @@ class EMP(db.Model):
         self.user = user
         self.password = password
         self.admin_id = admin_id
+     
+    """  
+    def create_database(self):
+        if not database_exists(f"mysql+pymysql://root:root@127.0.0.1/{self.name_emp}"):
+            create_database(f"mysql+pymysql://root:root@127.0.0.1/{self.name_emp}")
 
+    def bind_database(self):
+        db.engine.execute(f"CREATE SCHEMA IF NOT EXISTS {self.name_emp};")
+        db.engine.execute(f"ALTER ROLE username SET search_path TO {self.name_emp};")
+    """ 
+        
 with app.app_context():
     db.create_all()
 

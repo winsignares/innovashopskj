@@ -12,13 +12,8 @@ class Productos(db.Model):
     cantidadmin = db.Column(db.Integer)  # Cambiar a Integer para manejar la cantidad mínima como número
     iva = db.Column(db.Float())
     img = db.Column(db.String(255), nullable=True)
-    # proveedor_id = db.Column(db.Integer, db.ForeignKey('Proveedor.id'))
-    # empresa_id = db.Column(db.Integer, db.ForeignKey('EMP.companyid'))
 
-    # proveedor = db.relationship('Proveedor', backref=db.backref('productos', lazy=True))
-    # empresa = db.relationship('EMP', backref=db.backref('productos', lazy=True))
-
-    def __init__(self, id, nombre, preciouni, alternos, precioventa, cantidad, cantidadmin, iva, img=None):
+    def __init__(self, id, nombre, preciouni, alternos, precioventa, cantidad, cantidadmin, vendedor_id, iva, img=None):
         self.id = id
         self.nombre = nombre  
         self.preciouni = preciouni  
@@ -28,6 +23,7 @@ class Productos(db.Model):
         self.cantidadmin = cantidadmin  
         self.iva = iva
         self.img = img
+        self.vendedor_id = vendedor_id
 
     def actualizar_color(self):
         if self.cantidad < self.cantidadmin:

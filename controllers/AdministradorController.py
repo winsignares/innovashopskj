@@ -14,7 +14,7 @@ Admins_schema = AdminSchema(many=True)
 SECRET_KEY = "pruebaToken"
 
 def generar_token_admin(user_id):
-    fecha_vencimiento = datetime.now(tz=timezone.utc) + timedelta(seconds=30)
+    fecha_vencimiento = datetime.now(tz=timezone.utc) + timedelta(seconds=150)
     payload = {
         "exp": fecha_vencimiento,
         "user_id": user_id,

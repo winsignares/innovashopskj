@@ -15,6 +15,7 @@
     <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode/dist/JsBarcode.all.min.js"></script>
     <script src="../static/js/app.js" defer></script>
+    <script src="../static/js/carrito.js" defer></script>
     <script src="../static/js/ventanasemergentes.js" defer></script>
     <script src="../static/js/Tablas.js" defer></script>
     <style>
@@ -140,6 +141,11 @@
                                         <label for="password">Contraseña</label>
                                         <input type="text" name="password" placeholder="Ingrese Contraseña" required autocomplete="off">
                                     </div>
+
+                                    <div class="campo">
+                                        <label for="vendedor_id">ID del vendedor:</label>
+                                        <input type="text" name="vendedor_id" value="{{ session['vendedor_id'] }}" required readonly>
+                                    </div>
                         
                                     <div>
                                         <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar cliente</button>   
@@ -150,7 +156,7 @@
                     </div>
 
                     <div id="modal-graficaCliente" class = "modal">
-                        <div class="modal-contenido">
+                        <div class="modal-contenido centrado">
                             <div class="found">
                                 <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
                                 <img src="../static/img/grafica.png" alt="">
@@ -175,17 +181,21 @@
                                 <th>Correo</th>
                                 <th>Direccion</th>
                                 <th>Telefono</th>
+                                <th>ID Vendedor</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for cliente in clientes %}
-                                <tr class="abrir-modal" data-modal-id="modal-graficaCliente" style="cursor: pointer;">
-                                    <td>{{ cliente.id }}</td>
-                                    <td>{{ cliente.nombre }}</td>
-                                    <td>{{ cliente.email}}</td>
-                                    <td>{{ cliente.direccion }}</td>
-                                    <td>{{ cliente.telefono }}</td>
-                                </tr>
+                                {% if cliente.vendedor_id == session['vendedor_id'] %}
+                                    <tr class="abrir-modal" data-modal-id="modal-graficaCliente" style="cursor: pointer;">
+                                        <td>{{ cliente.id }}</td>
+                                        <td>{{ cliente.nombre }}</td>
+                                        <td>{{ cliente.email}}</td>
+                                        <td>{{ cliente.direccion }}</td>
+                                        <td>{{ cliente.telefono }}</td>
+                                        <td>{{ cliente.vendedor_id }}</td>
+                                    </tr>
+                                {% endif %}
                             {% endfor %}
                         </tbody>
                     </table> 
@@ -270,11 +280,12 @@
                     </div>
 
                      <div id="modal-Actproductos" class="modal">
-                        <div class="modal-contenido">
+                        <div class="modal-contenido centrado">
                             <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
                             <h2>Actualizar Productos</h2>
                             
                             <form action="/actualizarproducto" method="post" enctype="multipart/form-data">
+                                
                                 <div class="campo">
                                     <label for="id">ID</label>
                                     <input type="number" name="id" placeholder="Ingrese ID del producto" required autocomplete="off">
@@ -308,7 +319,7 @@
                     </div>
 
                     <div id="modal-parametrizacion" class="modal">
-                        <div class="modal-contenido">
+                        <div class="modal-contenido centrado">
                             <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
                             <h2>Parametrización del Producto</h2>
                             
@@ -340,7 +351,7 @@
                     </div>
 
                     <div id="modal-DescProducto" class="modal">
-                        <div class="modal-contenido">
+                        <div class="modal-contenido centrado">
                             <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
                             <h2>Aplicar descuentos</h2>
                             
@@ -372,7 +383,7 @@
                     </div>
 
                     <div id="modal-DescripcionProducto" class="modal">
-                        <div class="modal-contenido">
+                        <div class="modal-contenido centrado">
                             <div class="found">
                                 <span class="cerrar-modal">&times;</span>
 
@@ -554,112 +565,90 @@
             </div>
     
             <div class="pagina Venta">                
-                    <div class="dentro">
-                        <div id="RegistroProveedor">
-                            <div id = "titulo">
-                                <div class="formulario">
-                                    <form id="formulario-busqueda" onsubmit="return false;">
-                                        <label id = "id" style="margin-right: -11px"> <div id = "id2">ID:</div></label>
-                                        <input type="text" id="textbox" name="termino" placeholder="Ingrese nombre o ID" required >
-                                    </form>
-                                </div>
-                                <button class="abrir-modal" data-modal-id="modal-carrito" id = "Carrito">
-                                    <i class='bx bx-cart' id = "iconoCar"></i>
-                                    <label for="bx bx bx-cart">0</label>
-                                </button>
+                <div class="dentro">
+                    <div id="Carrito">
+                        <div id="titulo">
+                            <div class="formulario">
+                                <form id="formulario-busqueda" onsubmit="return false;">
+                                    <label id="id" style="margin-right: -11px"> <div id="id2">ID:</div></label>
+                                    <input type="text" id="textbox" name="termino" placeholder="Ingrese nombre o ID" required>
+                                </form>
                             </div>
-                        </div>    
-    
-                            <div id="modal-carrito" class="modal">
+                            <button class="abrir-modal" data-modal-id="modal-carrito" id="Carrito">
+                                <i class='bx bx-cart' id="iconoCar"></i>
+                            </button>
+                        </div>
+                    </div>    
+            
+                    <div id="modal-carrito" class="modal">
+                        <div class="modal-contenido">
+                            <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
+                            <h2>Carrito de compras</h2>
+                            <div id="productos-en-carrito">
+                            </div>
+                            <div class="completar">
+                                <div class="total"> Total: 
+                                    <label id="totalCarrito">$0.00</label>
+                                </div>
+                                <button class="abrir-modal" data-modal-id="modal-compra">Completar Venta</button>
+                            </div>  
+                            
+                            <div id="modal-compra" class="modal">
                                 <div class="modal-contenido">
                                     <span class="cerrar-modal"><div style="margin: 0px 15px 10px 10px;">&times;</div></span>
-                                    <h2>Confirmar Compra</h2>
-    
-                                    <div class="contenedorProductos">
-                                        <div id = "producto">
-                                            <div id = "img">
-                                                <img src="../static/img/mesa.jpeg" alt="">
-            
-                                            </div>
-                                            <div id = "datos">
-                                                <div> Mesa</div>
-                                                <div id = "checkbox"> 100.000
-                                                </div>
-                                                <div>Cantidad:
-                                                    <input type="text" id = "cantidad">
-                                                </div>
-            
-                                            </div>
+                                    <h2>Completar Venta</h2>
+                                    <form id="form-completar-venta" action="/completar-venta" method="POST">
+
+
+                                        <div class="campo">
+                                            <label for="id-venta">ID de la Venta</label>
+                                            <input type="number" id="id-venta" name="id-venta" placeholder="Ingrese ID de la venta" required>
                                         </div>
-                                    </div>
-                                    <div class="completar">
-                                        <div class="total"> Total: 
-                                            <label for="total"> 100.000$</label>
+                                        
+                                        <div class="campo">
+                                            <label for="id-cliente">IDs de clientes registrados:</label>
+                                            <select id="id-cliente" name="id-cliente" required>
+                                                {% for cliente in clientes %}
+                                                    <option value="{{ cliente.id }}">{{ cliente.id }}</option>
+                                                {% endfor %}
+                                            </select>
                                         </div>
-                                        <button id = "HacerCompra" type="submit" class="btn btn-primary btn-lg">Completar compra</button>
-                                    </div>                               
+
+                                        <div class="campo">
+                                            <div class="total"> Total: 
+                                                <label id="totalCarritoModal">$0.00</label>
+                                                <input type="hidden" id="totalCarrito" name="totalCarrito">
+                                            </div>
+                                        </div> 
+
+                                        <div>
+                                            <button type="submit" class="btn btn-primary btn-lg Guardar">Completar Venta</button>   
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             
-                            
-                        <div class = "contenedorProductos">
-                            <div class="BarraDeProductos">
-                                <div class = "productoInfo">
-                                    <img src="../static/img/mesa.jpeg" class = "imgProducto">
-                                    <div class = "info">
-                                        <label for="info"> Mesa de roble</label>
-                                        <label for="info">100.000 </label>
-                                        <button type="button" class="btn btn-primary btn-lg" id = "AgregarCarrito">Agregar al carrito</button>
-    
-                                    </div>
-                                </div>
-                                <div class = "productoInfo">
-                                    <img src="../static/img/img-1-silla-coco-min.jpg" class = "imgProducto">
-                                    <div class = "info">
-                                        <label for="info"> Trono de roble</label>
-                                        <label for="info">150.000$ </label>
-                                        <button type="button" class="btn btn-primary btn-lg" id = "AgregarCarrito">Agregar al carrito</button>
-    
-                                    </div>
-                                </div>
-                                <div class = "productoInfo">
-                                    <img src="../static/img/images.jpeg" class = "imgProducto">
-                                    <div class = "info">
-                                        <label for="info"> Tocador </label>
-                                        <label for="info">200.000$ </label>
-                                        <button type="button" class="btn btn-primary btn-lg" id = "AgregarCarrito">Agregar al carrito</button>
-    
-                                    </div>
-                                </div>
-                                <div class = "productoInfo">
-                                    <img src="../static/img/unnamed.jpg" class = "imgProducto">
-                                    <div class = "info">
-                                        <label for="info"> El comodisimo </label>
-                                        <label for="info">500.000$ </label>
-                                        <button type="button" class="btn btn-primary btn-lg" id = "AgregarCarrito">Agregar al carrito</button>
-    
-                                    </div>
-                                </div>
-                                <div class = "productoInfo">
-                                    <img src="../static/img/televisor.jpg" class = "imgProducto">
-                                    <div class = "info">
-                                        <label for="info"> El Full achede </label>
-                                        <label for="info">1.000.000$ </label>
-                                        <button type="button" class="btn btn-primary btn-lg" id = "AgregarCarrito">Agregar al carrito</button>
-    
-                                    </div>
-                                </div>    
-                            </div>
-                        </div>
 
-                        <div class="pestañasProductos">
-                            <u class="pestaña">1 </u> <u class="pestaña">2 </u> <u class="pestaña">3</u>...<u class="pestaña">4</u>
                         </div>
-
                     </div>
-            </div>
+            
+                    <div class="contenedorProductos" id="contenedorProductos">
+                        {% for producto in productos %}
+                        <div class="productoInfo">
+                            <img src="{{ url_for('static', filename='img/Img-productos/' + producto.img) }}" class="imgProducto">
+                            <div class="info">
+                                <label class="nombre-producto">{{ producto.nombre }}</label>
+                                <label class="precio-producto">{{ producto.precioventa }}</label>
+                                <button type="button" class="btn btn-primary btn-lg agregar-al-carrito" data-producto-id="{{ producto.id }}" data-producto-precio="{{ producto.precioventa }}">Agregar al carrito</button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    
+            
         </div>
-    </div>
+            </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -728,7 +717,10 @@
                 }
             });
         });
+
    </script>
+   
+
 </body>
 </html>
 {% endblock %}

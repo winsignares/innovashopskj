@@ -53,6 +53,7 @@ def crear_empresa():
             admin_id=admin_id
         )
 
+        #nueva_empresa.create_database()
         db.session.add(nueva_empresa)
         db.session.commit()
 

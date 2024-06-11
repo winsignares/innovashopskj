@@ -194,6 +194,11 @@
                                     <label for="password">Contraseña</label>
                                     <input type="text" name="password" placeholder="Ingrese el password" required>
                                 </div>
+
+                                <div class="campo">
+                                    <label for="company_id">ID de la empresa:</label>
+                                    <input type="text" name="company_id" value="{{ session['company_id'] }}" required readonly>
+                                </div>
                     
                                 <div>
                                     <button type="submit" class="btn btn-primary btn-lg Guardar">Registrar vendedor</button>   
@@ -210,18 +215,23 @@
                             <th>Nombre</th>
                             <th>Correo</th>
                             <th>Fecha de Inicio</th>
+                            <th>ID de la empresa</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for vendedor in vendedores %}
-                            <tr>
-                                <td>{{ vendedor.id }}</td>
-                                <td>{{ vendedor.nombre }}</td>
-                                <td>{{ vendedor.email}}</td>
-                                <td>{{ vendedor.fecha_inicio }}</td>
-                            </tr>
+                            {% if vendedor.company_id == session['company_id'] %}
+                                <tr>
+                                    <td>{{ vendedor.id }}</td>
+                                    <td>{{ vendedor.nombre }}</td>
+                                    <td>{{ vendedor.email}}</td>
+                                    <td>{{ vendedor.fecha_inicio }}</td>
+                                    <td>{{ vendedor.company_id }}</td>
+                                </tr>
+                            {% endif %}
                         {% endfor %}
                     </tbody>
+                    
                 </table> 
             </div>
         </div>

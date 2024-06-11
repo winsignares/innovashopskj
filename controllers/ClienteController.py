@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, render_template, request, redirect, session
 from config.db import app, db, ma
+from controllers.UserController import token_required
 from models.ClienteModel import Cliente, ClientesSchema
 
 ruta_clientes = Blueprint("route_clientes", __name__)
@@ -18,6 +19,7 @@ def registrar_cliente():
         Telefono = request.form['telefono']
         user = request.form['user'] 
         password = request.form['password'] 
+        vendedor_id = session.get('vendedor_id')
 
         cliente_existente = Cliente.query.filter_by(id=id_cliente).all()
         usuario = Cliente.query.filter_by(user=user).all()
@@ -34,7 +36,8 @@ def registrar_cliente():
             direccion=Direccion,
             telefono=Telefono,
             user = user,
-            password = password
+            password = password,
+            vendedor_id=vendedor_id
         )
 
         db.session.add(nuevo_cliente)
@@ -43,6 +46,7 @@ def registrar_cliente():
     return redirect('/Portal_Vendedor')
 
 @app.route('/Portal_Cliente')
+@token_required
 def portalcliente():
     
     if 'usuario' in session:

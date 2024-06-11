@@ -11,9 +11,6 @@ class Admin(db.Model):
       self.userad = userad
       self.passwordad = passwordad
 
-with app.app_context():
-    db.create_all()
-
 class AdminSchema(ma.Schema):
     class Meta:
         fields = ('id', 'userad', 'passwordad')

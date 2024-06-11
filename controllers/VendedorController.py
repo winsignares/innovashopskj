@@ -1,6 +1,7 @@
 from flask import Blueprint, Flask, render_template,json, jsonify, redirect, session, request
 from config.db import app, db, ma
 from controllers.UserController import token_required
+from models.EmpresaModel import EMP
 from models.VendedoresModel import Vendedor, VendedorSchema
 from models.ClienteModel import Cliente, ClientesSchema
 from models.ProductosModel import Productos, ProductoSchema
@@ -20,6 +21,10 @@ def registrar_vendedor():
         Fecha_inicio = request.form['fecha_inicio']
         user = request.form['user'] 
         password = request.form['password'] 
+        company_id = session.get('company_id')  
+
+        if not company_id:
+            return jsonify({"error": "No hay una empresa actual en sesión."}), 400
 
         vendedor_existente = Vendedor.query.filter_by(id=id_vendedor).all()
         usuario = Vendedor.query.filter_by(user=user).all()
@@ -35,7 +40,8 @@ def registrar_vendedor():
             email=Email,
             fecha_inicio=Fecha_inicio,
             user = user,
-            password = password
+            password = password,
+            company_id=company_id
         )
 
         db.session.add(nuevo_vendedor)

@@ -1,6 +1,7 @@
 import os
 from flask import Blueprint, jsonify, render_template, request, redirect
 from config.db import app, db, ma
+from models.ClienteModel import Cliente
 from models.ProductosModel import Productos, ProductoSchema
 
 ruta_productos = Blueprint("route_productos", __name__)
@@ -167,3 +168,27 @@ def obtener_productos():
         })
     
     return jsonify(productos_info)
+
+@app.route('/completar-compra', methods=['POST'])
+def completar_compra():
+    # Obtener los datos JSON de la solicitud
+    data = request.get_json()
+    
+    # Extraer la lista de productos, el total y el cliente de la solicitud
+    productos = data['productos']
+    total = data['total']
+    cliente = data['cliente']
+    
+    # Verificar si el cliente existe en la base de datos
+    if cliente in Cliente:
+        # Aquí puedes procesar la compra: guardar en la base de datos, etc.
+        # Por ahora, simplemente imprimir los datos recibidos
+        print("Cliente:", Cliente[cliente])
+        print("Productos:", productos)
+        print("Total:", total)
+        
+        # Simular respuesta exitosa
+        return jsonify({'success': True, 'cliente_existe': True, 'cliente_info': Cliente[cliente]})
+    else:
+        # Si el cliente no existe, enviar una respuesta indicando que el cliente no fue encontrado
+        return jsonify({'success': False, 'cliente_existe': False})
