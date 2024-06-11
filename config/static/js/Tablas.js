@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const precioVenta = celdas[5]. textContent.trim();
             const cantidad = celdas[6]. textContent.trim();
             const cantidadMin = celdas[7]. textContent.trim();
+            
 
             document.getElementById("imgdesc").src = imgUrl;
 

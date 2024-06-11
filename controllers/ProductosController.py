@@ -1,5 +1,5 @@
 import os
-from flask import Blueprint, jsonify, render_template, request, redirect
+from flask import Blueprint, jsonify, render_template, request, redirect, session
 from config.db import app, db, ma
 from models.ClienteModel import Cliente
 from models.ProductosModel import Productos, ProductoSchema
@@ -26,7 +26,8 @@ def registrar_productos():
     cantidadmin = int(to_float(request.form.get('cantidadmin'), 0))
     iva = to_float(request.form.get('iva'), 0.0)
     img = request.files.get('img')
-    
+    vendedor_id = session.get('vendedor_id')
+
     if not nombre:
         return jsonify({"error": "El nombre es obligatorio"}), 400
     
@@ -50,7 +51,8 @@ def registrar_productos():
             cantidad=cantidad,
             cantidadmin=cantidadmin,
             iva=iva,
-            img=filename
+            img=filename,
+            vendedor_id=vendedor_id
         )
     db.session.add(nuevo_producto)   
     db.session.commit()

@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, render_template, request, redirect
+from flask import Blueprint, jsonify, render_template, request, redirect, session
 from config.db import app, db, ma
 from models.ProveedoresModel import Proveedor, ProveedoresSchema
 
@@ -16,6 +16,7 @@ def registrar_proveedor():
         Email = request.form['email'] 
         Direccion = request.form['direccion']
         Telefono = request.form['telefono'] 
+        company_id = session.get('company_id')  
         
 
         proveedor_existente = Proveedor.query.filter_by(id=id_proveedor).all()
@@ -28,7 +29,8 @@ def registrar_proveedor():
             nombre=Nombre,
             email=Email,
             direccion=Direccion,
-            telefono=Telefono
+            telefono=Telefono,
+            company_id=company_id
         )
 
         db.session.add(nuevo_proveedor)

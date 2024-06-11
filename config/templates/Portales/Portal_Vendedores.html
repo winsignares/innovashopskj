@@ -267,6 +267,11 @@
                                     <input type="number" name="cantidadmin" placeholder="Ingrese cantidad de productos" required autocomplete="off">
                                 </div>
 
+                                <div class="campo">
+                                    <label for="vendedor_id">ID del vendedor:</label>
+                                    <input type="text" name="vendedor_id" value="{{ session['vendedor_id'] }}" required readonly>
+                                </div>
+
                                 <div class="Imagen">
                                     <label for="img">Subir imagen:</label>
                                     <input type="file" name="img" required> 
@@ -433,6 +438,8 @@
                                             <input class="txt_box" type="text">
 
                                         </div>
+
+                                        
                                         
                                     </div>
                                     <div class="grafica_2">
@@ -467,10 +474,12 @@
                                 <th>Cantidad mínima</th>
                                 <th>Iva</th>
                                 <th>Parametrización</th>
+                                <th>ID Vendedor</th>
                             </tr>
                         </thead>
-                        <tbody id="productos-tbody">
-                            {% for producto in productos %}  
+                       <!-- <tbody id="productos-tbody">
+                            {% for producto in productos %}
+                                {% if producto.vendedor_id == session['vendedor_id'] %}   
                                 <tr class="abrir-modal" data-modal-id="modal-DescripcionProducto" style="cursor: pointer;" 
                                     data-cantidad="{{ producto.cantidad }}" data-cantidadmin="{{ producto.cantidadmin }}">
                                     <td><img src="{{ url_for('static', filename='img/Img-productos/' + producto.img) }}" alt="Imagen del producto" width="50" height="50"></td>
@@ -482,6 +491,28 @@
                                     <td>{{ producto.cantidad }}</td>
                                     <td>{{ producto.cantidadmin }}</td>
                                     <td>{{ producto.iva }}</td>
+                                    <td>{{ producto.vendedor_id }}</td>
+                                    <td>
+                                        <button class="abrir-modal" data-modal-id="modal-parametrizacion">Parametrizar</button>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>--> 
+                        <tbody id="productos-tbody">
+                            {% for producto in productos %}                         
+                                <tr class="abrir-modal" data-modal-id="modal-DescripcionProducto" style="cursor: pointer;" 
+                                    data-cantidad="{{ producto.cantidad }}" data-cantidadmin="{{ producto.cantidadmin }}">
+                                    <td><img src="{{ url_for('static', filename='img/Img-productos/' + producto.img) }}" alt="Imagen del producto" width="50" height="50"></td>
+                                    <td>{{ producto.id }}</td>
+                                    <td>{{ producto.nombre }}</td>
+                                    <td>{{ producto.preciouni }}</td>
+                                    <td>{{ producto.alternos }}</td>
+                                    <td>{{ producto.precioventa }}</td>
+                                    <td>{{ producto.cantidad }}</td>
+                                    <td>{{ producto.cantidadmin }}</td>
+                                    <td>{{ producto.iva }}</td>
+                                    <td>{{ producto.vendedor_id }}</td>
                                     <td>
                                         <button class="abrir-modal" data-modal-id="modal-parametrizacion">Parametrizar</button>
                                     </td>

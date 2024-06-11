@@ -1,5 +1,5 @@
 from config.db import app, db, ma 
-from sqlalchemy_utils import create_database, database_exists
+#from sqlalchemy_utils import create_database, database_exists
 
 class EMP(db.Model):
     __tablename__ = 'EMP'
